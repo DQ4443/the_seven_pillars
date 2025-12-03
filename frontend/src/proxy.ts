@@ -20,7 +20,7 @@ function getDashboardUrl(role: UserRole): string {
   }
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { supabaseResponse, user, role } = await updateSession(request)
 
   const path = request.nextUrl.pathname
