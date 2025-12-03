@@ -1,0 +1,81 @@
+from app.schemas.user import (
+    UserRole,
+    ProfileBase,
+    ProfileCreate,
+    ProfileUpdate,
+    ProfileResponse,
+    RelationshipResponse,
+)
+from app.schemas.academic import (
+    SubjectBase,
+    SubjectCreate,
+    SubjectUpdate,
+    SubjectResponse,
+    ClassBase,
+    ClassCreate,
+    ClassUpdate,
+    ClassResponse,
+    EnrollmentBase,
+    EnrollmentCreate,
+    EnrollmentResponse,
+)
+from app.schemas.resource import (
+    ResourceBase,
+    ResourceCreate,
+    ResourceResponse,
+)
+from app.schemas.test import (
+    TestBase,
+    TestCreate,
+    TestUpdate,
+    TestResponse,
+    QuestionBase,
+    QuestionCreate,
+    QuestionResponse,
+    SubmissionBase,
+    SubmissionCreate,
+    SubmissionResponse,
+    AnswerBase,
+    AnswerCreate,
+    AnswerResponse,
+)
+
+__all__ = [
+    # User
+    "UserRole",
+    "ProfileBase",
+    "ProfileCreate",
+    "ProfileUpdate",
+    "ProfileResponse",
+    "RelationshipResponse",
+    # Academic
+    "SubjectBase",
+    "SubjectCreate",
+    "SubjectUpdate",
+    "SubjectResponse",
+    "ClassBase",
+    "ClassCreate",
+    "ClassUpdate",
+    "ClassResponse",
+    "EnrollmentBase",
+    "EnrollmentCreate",
+    "EnrollmentResponse",
+    # Resource
+    "ResourceBase",
+    "ResourceCreate",
+    "ResourceResponse",
+    # Test
+    "TestBase",
+    "TestCreate",
+    "TestUpdate",
+    "TestResponse",
+    "QuestionBase",
+    "QuestionCreate",
+    "QuestionResponse",
+    "SubmissionBase",
+    "SubmissionCreate",
+    "SubmissionResponse",
+    "AnswerBase",
+    "AnswerCreate",
+    "AnswerResponse",
+]
