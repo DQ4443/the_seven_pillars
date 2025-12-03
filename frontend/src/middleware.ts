@@ -1,15 +1,27 @@
 import { type NextRequest, NextResponse } from 'next/server'
-import { updateSession } from '@/lib/supabase/middleware'
+import { updateSession, type UserRole } from '@/lib/supabase/middleware'
 
 // Define protected routes and their required roles
-const protectedRoutes = {
+const protectedRoutes: Record<string, UserRole[]> = {
   '/admin': ['admin'],
   '/parent': ['admin', 'parent'],
   '/student': ['admin', 'parent', 'student'],
 }
 
+// Get the appropriate dashboard URL for a role
+function getDashboardUrl(role: UserRole): string {
+  switch (role) {
+    case 'admin':
+      return '/admin'
+    case 'parent':
+      return '/parent'
+    default:
+      return '/student'
+  }
+}
+
 export async function middleware(request: NextRequest) {
-  const { supabaseResponse, user } = await updateSession(request)
+  const { supabaseResponse, user, role } = await updateSession(request)
 
   const path = request.nextUrl.pathname
 
@@ -28,33 +40,15 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(redirectUrl)
     }
 
-    // Get user role from profile (we'll need to fetch this)
-    // For now, we'll use a simple approach - in production, this should be cached
-    const userRole = user.user_metadata?.role || 'student'
-
-    // Check if user has required role
-    if (!allowedRoles.includes(userRole)) {
-      // Redirect to appropriate dashboard based on role
-      if (userRole === 'admin') {
-        return NextResponse.redirect(new URL('/admin', request.url))
-      } else if (userRole === 'parent') {
-        return NextResponse.redirect(new URL('/parent', request.url))
-      } else {
-        return NextResponse.redirect(new URL('/student', request.url))
-      }
+    // Check if user has required role (role is fetched from profiles table)
+    if (!allowedRoles.includes(role)) {
+      return NextResponse.redirect(new URL(getDashboardUrl(role), request.url))
     }
   }
 
   // Redirect authenticated users away from auth pages
   if (user && (path === '/login' || path === '/register')) {
-    const userRole = user.user_metadata?.role || 'student'
-    if (userRole === 'admin') {
-      return NextResponse.redirect(new URL('/admin', request.url))
-    } else if (userRole === 'parent') {
-      return NextResponse.redirect(new URL('/parent', request.url))
-    } else {
-      return NextResponse.redirect(new URL('/student', request.url))
-    }
+    return NextResponse.redirect(new URL(getDashboardUrl(role), request.url))
   }
 
   return supabaseResponse

@@ -35,7 +35,8 @@ export async function signUp(formData: FormData) {
     options: {
       data: {
         full_name: fullName,
-        role: 'student',
+        // Role is managed in profiles table (single source of truth)
+        // The database trigger will create the profile with default 'student' role
       },
     },
   })

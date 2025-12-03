@@ -1,6 +1,8 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+export type UserRole = 'admin' | 'parent' | 'student'
+
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
@@ -34,5 +36,19 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  return { supabaseResponse, user }
+  // Fetch role from profiles table (single source of truth)
+  let role: UserRole = 'student'
+  if (user) {
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single()
+
+    if (profile?.role) {
+      role = profile.role as UserRole
+    }
+  }
+
+  return { supabaseResponse, user, role }
 }
