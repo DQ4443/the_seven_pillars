@@ -528,3 +528,422 @@ export function SectionSubtitle({ children, className }: { children: ReactNode; 
     </motion.p>
   );
 }
+
+/**
+ * FloatingElement - Continuous floating animation for decorative elements
+ * Best for: Background decorations, icons, shapes
+ */
+export function FloatingElement({
+  children,
+  className,
+  duration = 6,
+  delay = 0,
+  yOffset = 20,
+  xOffset = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  duration?: number;
+  delay?: number;
+  yOffset?: number;
+  xOffset?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{
+        opacity: 1,
+        y: [0, -yOffset, 0],
+        x: [0, xOffset, 0],
+      }}
+      transition={{
+        opacity: { duration: 0.5, delay },
+        y: {
+          duration,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay,
+        },
+        x: {
+          duration: duration * 1.2,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay,
+        },
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * RotatingElement - Slow continuous rotation for decorative elements
+ */
+export function RotatingElement({
+  children,
+  className,
+  duration = 20,
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  duration?: number;
+  delay?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, rotate: 0 }}
+      animate={{
+        opacity: 1,
+        rotate: 360,
+      }}
+      transition={{
+        opacity: { duration: 0.5, delay },
+        rotate: {
+          duration,
+          repeat: Infinity,
+          ease: "linear",
+          delay,
+        },
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * PulseGlow - Subtle pulsing glow effect for emphasis
+ */
+export function PulseGlow({
+  children,
+  className,
+  duration = 3,
+}: {
+  children: ReactNode;
+  className?: string;
+  duration?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      animate={{
+        opacity: [0.5, 1, 0.5],
+        scale: [1, 1.05, 1],
+      }}
+      transition={{
+        duration,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * ParallaxScroll - Scroll-based parallax effect
+ * speed: negative = slower than scroll, positive = faster
+ */
+export function ParallaxScroll({
+  children,
+  className,
+  speed = -0.2,
+}: {
+  children: ReactNode;
+  className?: string;
+  speed?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      initial={{ y: 0 }}
+      whileInView={{ y: 0 }}
+      viewport={{ once: false }}
+      style={{
+        willChange: "transform",
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 30,
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * GradientShift - Animated gradient background
+ */
+export function GradientShift({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      className={className}
+      animate={{
+        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+      }}
+      transition={{
+        duration: 15,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+      style={{
+        backgroundSize: "200% 200%",
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/**
+ * TypewriterText - Character-by-character reveal
+ * Best for: Hero headlines, impactful statements
+ */
+export function TypewriterText({
+  text,
+  className,
+  speed = 0.03,
+  delay = 0,
+}: {
+  text: string;
+  className?: string;
+  speed?: number;
+  delay?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <span className={className}>{text}</span>;
+  }
+
+  return (
+    <span className={className}>
+      {text.split("").map((char, index) => (
+        <motion.span
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.1,
+            delay: delay + index * speed,
+          }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+/**
+ * CountUp - Animated number counter
+ * Best for: Statistics, achievements
+ */
+export function CountUp({
+  end,
+  duration = 2,
+  delay = 0,
+  suffix = "",
+  prefix = "",
+  className,
+}: {
+  end: number;
+  duration?: number;
+  delay?: number;
+  suffix?: string;
+  prefix?: string;
+  className?: string;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return (
+      <span className={className}>
+        {prefix}
+        {end}
+        {suffix}
+      </span>
+    );
+  }
+
+  return (
+    <motion.span
+      className={className}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+    >
+      {prefix}
+      <motion.span
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay }}
+      >
+        {end}
+      </motion.span>
+      {suffix}
+    </motion.span>
+  );
+}
+
+/**
+ * MorphingBlob - Animated organic blob shape
+ * Best for: Background decorations
+ */
+export function MorphingBlob({
+  className,
+  color = "primary",
+}: {
+  className?: string;
+  color?: "primary" | "accent" | "secondary";
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  const colorClasses = {
+    primary: "bg-primary/10",
+    accent: "bg-accent/10",
+    secondary: "bg-secondary/30",
+  };
+
+  if (shouldReduceMotion) {
+    return (
+      <div
+        className={`rounded-full blur-3xl ${colorClasses[color]} ${className}`}
+      />
+    );
+  }
+
+  return (
+    <motion.div
+      className={`rounded-full blur-3xl ${colorClasses[color]} ${className}`}
+      animate={{
+        scale: [1, 1.1, 1],
+        borderRadius: ["40% 60% 60% 40%", "60% 40% 40% 60%", "40% 60% 60% 40%"],
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    />
+  );
+}
+
+/**
+ * ShimmerEffect - Subtle shimmer/shine effect
+ * Best for: Buttons, featured cards
+ */
+export function ShimmerEffect({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return (
+    <div className={`relative overflow-hidden ${className}`}>
+      {children}
+      <motion.div
+        className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent"
+        animate={{ x: ["0%", "200%"] }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatDelay: 3,
+          ease: "linear",
+        }}
+      />
+    </div>
+  );
+}
+
+/**
+ * DrawLine - SVG line drawing animation
+ * Best for: Decorative elements, dividers
+ */
+export function DrawLine({
+  className,
+  width = 100,
+  delay = 0,
+}: {
+  className?: string;
+  width?: number;
+  delay?: number;
+}) {
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return (
+      <svg className={className} width={width} height="2" viewBox={`0 0 ${width} 2`}>
+        <line x1="0" y1="1" x2={width} y2="1" stroke="currentColor" strokeWidth="2" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className={className} width={width} height="2" viewBox={`0 0 ${width} 2`}>
+      <motion.line
+        x1="0"
+        y1="1"
+        x2={width}
+        y2="1"
+        stroke="currentColor"
+        strokeWidth="2"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay, ease: smoothEasing }}
+      />
+    </svg>
+  );
+}

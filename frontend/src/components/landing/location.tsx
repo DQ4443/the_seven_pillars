@@ -1,8 +1,6 @@
 "use client";
 
 import { useLanguage } from "@/lib/i18n/context";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { MapPin, ExternalLink } from "lucide-react";
 import {
   SectionHeader,
@@ -22,23 +20,31 @@ export function Location() {
   const { language, t } = useLanguage();
 
   return (
-    <section id="location" className="py-16 md:py-24 bg-muted/50">
-      <div className="container mx-auto px-4">
+    <section id="location" className="section-botanical bg-muted/30">
+      <div className="container mx-auto px-4 max-w-7xl">
         {/* Section Header */}
-        <SectionHeader className="text-center mb-12">
-          <SectionTitle className="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <SectionHeader className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="h-px w-16 bg-border" />
+            <MapPin className="h-5 w-5 text-primary/60" strokeWidth={1.5} />
+            <div className="h-px w-16 bg-border" />
+          </div>
+          <SectionTitle className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4 text-balance">
             {t.location.title}
           </SectionTitle>
-          <SectionSubtitle className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <SectionSubtitle className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             {t.location.subtitle}
           </SectionSubtitle>
         </SectionHeader>
 
         <FadeInUp className="max-w-4xl mx-auto">
-          <Card className="overflow-hidden">
-            {/* Map */}
+          <div className="card-botanical overflow-hidden">
+            {/* Map - Arch shaped on top */}
             <FadeIn delay={0.15}>
-              <div className="aspect-video w-full bg-muted">
+              <div
+                className="aspect-video w-full bg-muted overflow-hidden"
+                style={{ borderRadius: "24px 24px 0 0" }}
+              >
                 <iframe
                   src={GOOGLE_MAPS_EMBED_URL}
                   width="100%"
@@ -53,33 +59,34 @@ export function Location() {
               </div>
             </FadeIn>
 
-            <CardContent className="p-6">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div className="flex items-start space-x-3">
-                  <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+            <div className="p-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <MapPin className="h-5 w-5 text-primary" strokeWidth={1.5} />
+                  </div>
                   <div>
-                    <p className="font-medium text-foreground">{ADDRESS}</p>
-                    <p className="text-sm text-muted-foreground mt-1">
+                    <p className="font-serif text-lg font-semibold text-foreground">{ADDRESS}</p>
+                    <p className="text-muted-foreground mt-1">
                       {t.location.servingAreas}
                     </p>
                   </div>
                 </div>
 
                 <TapScale>
-                  <Button asChild variant="outline" className="shrink-0">
-                    <a
-                      href={GOOGLE_MAPS_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      {t.location.openInMaps}
-                    </a>
-                  </Button>
+                  <a
+                    href={GOOGLE_MAPS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-transparent border border-primary text-primary text-sm font-medium uppercase tracking-widest transition-all duration-300 hover:bg-primary hover:text-primary-foreground shrink-0"
+                  >
+                    <ExternalLink className="h-4 w-4" strokeWidth={1.5} />
+                    {t.location.openInMaps}
+                  </a>
                 </TapScale>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </FadeInUp>
       </div>
     </section>
