@@ -833,6 +833,7 @@ export function CountUp({
 /**
  * MorphingBlob - Animated organic blob shape
  * Best for: Background decorations
+ * OPTIMIZED: Uses only transform (scale) for GPU acceleration, removed borderRadius animation
  */
 export function MorphingBlob({
   className,
@@ -849,26 +850,11 @@ export function MorphingBlob({
     secondary: "bg-secondary/30",
   };
 
-  if (shouldReduceMotion) {
-    return (
-      <div
-        className={`rounded-full blur-3xl ${colorClasses[color]} ${className}`}
-      />
-    );
-  }
-
+  // Always static - blobs are decorative, animation removed for performance
   return (
-    <motion.div
-      className={`rounded-full blur-3xl ${colorClasses[color]} ${className}`}
-      animate={{
-        scale: [1, 1.1, 1],
-        borderRadius: ["40% 60% 60% 40%", "60% 40% 40% 60%", "40% 60% 60% 40%"],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
+    <div
+      className={`rounded-full blur-2xl ${colorClasses[color]} ${className}`}
+      style={{ willChange: "auto" }}
     />
   );
 }

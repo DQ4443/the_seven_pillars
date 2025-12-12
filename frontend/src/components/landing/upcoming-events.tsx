@@ -41,6 +41,10 @@ export function UpcomingEvents() {
 
   return (
     <section id="events" className="section-botanical bg-muted/30 relative overflow-hidden">
+      {/* Top and bottom fades for smooth section transitions */}
+      <div className="absolute top-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
+
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none opacity-50">
         <MorphingBlob className="w-full h-full" color="secondary" />

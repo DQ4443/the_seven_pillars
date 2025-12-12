@@ -33,6 +33,10 @@ export function SuccessStories() {
 
   return (
     <section ref={sectionRef} id="success" className="section-botanical bg-muted/30 relative overflow-hidden">
+      {/* Top and bottom fades for smooth section transitions */}
+      <div className="absolute top-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
+
       {/* Parallax background decorations */}
       <motion.div
         className="absolute top-20 right-0 w-72 h-72 pointer-events-none translate-x-1/2"

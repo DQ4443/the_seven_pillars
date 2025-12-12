@@ -7,37 +7,14 @@ import { motion, useReducedMotion } from "framer-motion";
 
 // Floating educational icons configuration
 const floatingIcons = [
-  { Icon: BookOpen, className: "top-[15%] left-[8%] md:left-[12%]", delay: 0, duration: 7, yOffset: 15 },
-  { Icon: GraduationCap, className: "top-[25%] right-[10%] md:right-[15%]", delay: 0.5, duration: 8, yOffset: 20 },
-  { Icon: PenTool, className: "top-[60%] left-[5%] md:left-[10%]", delay: 1, duration: 6, yOffset: 12 },
-  { Icon: Calculator, className: "bottom-[25%] right-[8%] md:right-[12%]", delay: 1.5, duration: 7.5, yOffset: 18 },
-  { Icon: Lightbulb, className: "top-[45%] right-[5%] md:right-[8%]", delay: 2, duration: 6.5, yOffset: 14 },
-  { Icon: Star, className: "bottom-[35%] left-[12%] md:left-[18%]", delay: 0.8, duration: 8.5, yOffset: 16 },
+  { Icon: BookOpen, className: "top-[12%] left-[8%] md:left-[12%]", delay: 0, duration: 7, yOffset: 15 },
+  { Icon: GraduationCap, className: "top-[20%] right-[10%] md:right-[15%]", delay: 0.5, duration: 8, yOffset: 20 },
+  { Icon: PenTool, className: "top-[42%] left-[5%] md:left-[8%]", delay: 1, duration: 6, yOffset: 12 },
+  { Icon: Calculator, className: "top-[55%] right-[8%] md:right-[12%]", delay: 1.5, duration: 7.5, yOffset: 18 },
+  { Icon: Lightbulb, className: "top-[38%] right-[5%] md:right-[6%]", delay: 2, duration: 6.5, yOffset: 14 },
+  { Icon: Star, className: "top-[72%] left-[10%] md:left-[15%]", delay: 0.8, duration: 8.5, yOffset: 16 },
 ];
 
-// Pre-defined particle positions to avoid hydration mismatch (no Math.random during render)
-const particlePositions = [
-  { left: 12, top: 8, duration: 5.2, delay: 0.3 },
-  { left: 28, top: 15, duration: 6.1, delay: 1.2 },
-  { left: 45, top: 22, duration: 4.8, delay: 0.7 },
-  { left: 67, top: 10, duration: 5.9, delay: 1.8 },
-  { left: 82, top: 18, duration: 4.5, delay: 0.5 },
-  { left: 8, top: 35, duration: 6.3, delay: 1.0 },
-  { left: 35, top: 42, duration: 5.1, delay: 0.2 },
-  { left: 55, top: 38, duration: 7.0, delay: 1.5 },
-  { left: 78, top: 45, duration: 4.7, delay: 0.9 },
-  { left: 92, top: 32, duration: 5.8, delay: 1.3 },
-  { left: 15, top: 58, duration: 6.5, delay: 0.4 },
-  { left: 38, top: 65, duration: 4.9, delay: 1.1 },
-  { left: 62, top: 72, duration: 5.4, delay: 0.6 },
-  { left: 85, top: 62, duration: 6.2, delay: 1.7 },
-  { left: 5, top: 78, duration: 5.0, delay: 0.8 },
-  { left: 25, top: 85, duration: 6.8, delay: 1.4 },
-  { left: 48, top: 88, duration: 4.6, delay: 0.1 },
-  { left: 72, top: 82, duration: 5.7, delay: 1.6 },
-  { left: 88, top: 75, duration: 6.0, delay: 0.0 },
-  { left: 50, top: 50, duration: 5.5, delay: 1.9 },
-];
 
 export function Hero() {
   const { t } = useLanguage();
@@ -59,24 +36,8 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-background to-primary/5"
-          animate={shouldReduceMotion ? {} : {
-            background: [
-              "linear-gradient(135deg, rgba(220,207,194,0.2) 0%, rgba(249,248,244,1) 50%, rgba(140,154,132,0.05) 100%)",
-              "linear-gradient(135deg, rgba(140,154,132,0.1) 0%, rgba(249,248,244,1) 50%, rgba(194,123,102,0.08) 100%)",
-              "linear-gradient(135deg, rgba(220,207,194,0.2) 0%, rgba(249,248,244,1) 50%, rgba(140,154,132,0.05) 100%)",
-            ],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
+      {/* Static gradient background - optimized for performance */}
+      <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-background to-primary/5" />
 
       {/* Morphing blob decorations */}
       <MorphingBlob className="absolute top-10 left-0 w-72 h-72 md:w-96 md:h-96 -translate-x-1/2" color="primary" />
@@ -98,30 +59,6 @@ export function Hero() {
               <Icon className="h-5 w-5 md:h-6 md:w-6 text-primary/70" strokeWidth={1.5} />
             </div>
           </FloatingElement>
-        ))}
-      </div>
-
-      {/* Animated particles/dots background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {!shouldReduceMotion && particlePositions.map((particle, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 rounded-full bg-primary/20"
-            style={{
-              left: `${particle.left}%`,
-              top: `${particle.top}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              delay: particle.delay,
-              ease: "easeInOut",
-            }}
-          />
         ))}
       </div>
 
@@ -183,6 +120,9 @@ export function Hero() {
           </HeroItem>
         </HeroEntrance>
       </div>
+
+      {/* Bottom fade for smooth transition to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none" />
 
       {/* Scroll indicator */}
       {shouldReduceMotion ? (

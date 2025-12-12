@@ -20,7 +20,11 @@ export function Location() {
   const { language, t } = useLanguage();
 
   return (
-    <section id="location" className="section-botanical bg-muted/30">
+    <section id="location" className="section-botanical bg-muted/30 relative">
+      {/* Top and bottom fades for smooth section transitions */}
+      <div className="absolute top-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
+
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Section Header */}
         <SectionHeader className="text-center mb-16">

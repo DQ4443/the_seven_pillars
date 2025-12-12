@@ -60,7 +60,7 @@ export function Timetable() {
 
         {/* Desktop Table View */}
         <FadeInUp className="hidden lg:block">
-          <div className="card-botanical overflow-hidden">
+          <div className="card-botanical overflow-hidden rounded-md">
             <table className="w-full">
               <thead>
                 <tr className="bg-foreground text-background">
@@ -122,7 +122,7 @@ export function Timetable() {
 
             return (
               <StaggerItem key={day}>
-                <div className={`card-botanical overflow-hidden ${dayIndex % 2 === 1 ? "md:translate-y-4" : ""}`}>
+                <div className={`card-botanical overflow-hidden rounded-md ${dayIndex % 2 === 1 ? "md:translate-y-4" : ""}`}>
                   <div className="bg-foreground text-background px-6 py-4">
                     <h3 className="font-serif text-lg font-semibold">
                       {t.timetable.days[day]}

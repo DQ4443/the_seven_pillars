@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/context";
 import { CheckCircle, ExternalLink, Sparkles } from "lucide-react";
 import {
@@ -36,6 +37,9 @@ export function AboutDrRicky() {
 
   return (
     <section ref={sectionRef} id="about" className="section-botanical bg-background relative overflow-hidden">
+      {/* Top fade to blend with hero section gradient */}
+      <div className="absolute top-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
+
       {/* Parallax background decorations */}
       <motion.div
         className="absolute -top-20 -left-20 w-80 h-80 pointer-events-none"
@@ -69,28 +73,24 @@ export function AboutDrRicky() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left: Arch Photo + Story */}
           <FadeInLeft className="space-y-8">
-            {/* Photo Placeholder - Arch Shape with Parallax */}
+            {/* Dr. Ricky Photo - Arch Shape with Parallax */}
             <motion.div
-              className="aspect-[3/4] bg-muted flex items-center justify-center border border-border overflow-hidden shadow-botanical-lg"
+              className="w-[52%] mx-auto aspect-[3/4] bg-muted relative border border-border overflow-hidden shadow-botanical-lg"
               style={{
-                borderRadius: "200px 200px 24px 24px",
+                borderRadius: "90px 90px 12px 12px",
                 y: shouldReduceMotion ? 0 : photoY,
               }}
               whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="text-center text-muted-foreground p-8">
-                <motion.div
-                  className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <span className="text-4xl">👨‍🏫</span>
-                </motion.div>
-                <p className="text-sm font-medium">
-                  {language === "zh" ? "曲博士照片" : "Dr. Ricky's Photo"}
-                </p>
-              </div>
+              <Image
+                src="/dr_ricky.png"
+                alt={language === "zh" ? "曲博士" : "Dr. Ricky"}
+                fill
+                className="object-cover object-[center_20%]"
+                sizes="(max-width: 768px) 52vw, 26vw"
+                priority
+              />
             </motion.div>
 
             {/* Story */}
@@ -105,7 +105,7 @@ export function AboutDrRicky() {
           </FadeInLeft>
 
           {/* Right: Credentials + Philosophy */}
-          <Stagger className="space-y-6 lg:pt-12">
+          <Stagger className="space-y-6">
             {/* Credentials Card */}
             <StaggerItem>
               <CardHover>

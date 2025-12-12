@@ -230,6 +230,28 @@
   /* Section spacing */
   .section-botanical {
     @apply py-16 md:py-24 lg:py-32;
+    @apply relative;
+  }
+
+  /* Section transition gradients - soften boundaries between sections */
+  .section-fade-top {
+    @apply absolute top-0 left-0 right-0 h-24 md:h-32 pointer-events-none;
+    background: linear-gradient(to bottom, var(--background), transparent);
+  }
+
+  .section-fade-bottom {
+    @apply absolute bottom-0 left-0 right-0 h-24 md:h-32 pointer-events-none;
+    background: linear-gradient(to top, var(--background), transparent);
+  }
+
+  .section-fade-top-muted {
+    @apply absolute top-0 left-0 right-0 h-24 md:h-32 pointer-events-none;
+    background: linear-gradient(to bottom, hsl(var(--muted) / 0.3), transparent);
+  }
+
+  .section-fade-bottom-muted {
+    @apply absolute bottom-0 left-0 right-0 h-24 md:h-32 pointer-events-none;
+    background: linear-gradient(to top, hsl(var(--muted) / 0.3), transparent);
   }
 
   /* Heading styles */
