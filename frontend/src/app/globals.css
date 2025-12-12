@@ -3,121 +3,288 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ==========================================
+   BOTANICAL / ORGANIC SERIF DESIGN SYSTEM
+   Dr Ricky's Education - 曲博士教育
+   ========================================== */
+
 @theme inline {
+  /* Typography - Botanical System */
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+
+  /* Botanical Color Palette */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+
+  /* Botanical Radii - Highly Rounded */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 40px;
+  --radius-3xl: 48px;
+  --radius-full: 9999px;
+
+  /* Chart colors (keeping for compatibility) */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar (keeping for portal compatibility) */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --radius: 0.625rem;
-  /* Dr Ricky's Education - Professional Navy & Gold palette */
-  --background: #fafafa;
-  --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #1e3a5f;
-  --primary-foreground: #ffffff;
-  --secondary: #c9a227;
-  --secondary-foreground: #1a1a1a;
-  --muted: #f5f5f5;
-  --muted-foreground: #6b7280;
-  --accent: #2a9d8f;
-  --accent-foreground: #ffffff;
-  --destructive: #dc2626;
-  --border: #e5e7eb;
-  --input: #e5e7eb;
-  --ring: #1e3a5f;
-  --chart-1: #1e3a5f;
-  --chart-2: #c9a227;
-  --chart-3: #2a9d8f;
-  --chart-4: #6b7280;
-  --chart-5: #1a1a1a;
-  --sidebar: #fafafa;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #1e3a5f;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f5f5f5;
-  --sidebar-accent-foreground: #1a1a1a;
-  --sidebar-border: #e5e7eb;
-  --sidebar-ring: #1e3a5f;
+  --radius: 24px;
+
+  /* ========================================
+     BOTANICAL COLOR PALETTE - Light Mode
+     Earthy, muted, nature-inspired
+     ======================================== */
+
+  /* Backgrounds */
+  --background: #F9F8F4;           /* Warm Alabaster / Rice Paper */
+  --card: #FFFFFF;                 /* Pure White for cards */
+  --popover: #FFFFFF;
+  --muted: #F2F0EB;                /* Soft Clay / Mushroom */
+
+  /* Foregrounds */
+  --foreground: #2D3A31;           /* Deep Forest Green - primary text */
+  --card-foreground: #2D3A31;
+  --popover-foreground: #2D3A31;
+  --muted-foreground: #5C6B5E;     /* Muted Forest */
+
+  /* Primary - Sage Green */
+  --primary: #8C9A84;              /* Sage Green */
+  --primary-foreground: #FFFFFF;
+
+  /* Secondary - Soft Clay */
+  --secondary: #DCCFC2;            /* Soft Clay / Mushroom */
+  --secondary-foreground: #2D3A31;
+
+  /* Accent - Terracotta (for CTAs and highlights) */
+  --accent: #C27B66;               /* Terracotta */
+  --accent-foreground: #FFFFFF;
+
+  /* Borders & Inputs */
+  --border: #E6E2DA;               /* Stone */
+  --input: #E6E2DA;
+  --ring: #8C9A84;                 /* Sage Green for focus */
+
+  /* Destructive */
+  --destructive: #B85C4D;          /* Muted terracotta-red */
+
+  /* Chart colors - Nature inspired */
+  --chart-1: #8C9A84;              /* Sage */
+  --chart-2: #C27B66;              /* Terracotta */
+  --chart-3: #DCCFC2;              /* Clay */
+  --chart-4: #A4B89A;              /* Light sage */
+  --chart-5: #2D3A31;              /* Forest */
+
+  /* Sidebar (portal) */
+  --sidebar: #F9F8F4;
+  --sidebar-foreground: #2D3A31;
+  --sidebar-primary: #8C9A84;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F2F0EB;
+  --sidebar-accent-foreground: #2D3A31;
+  --sidebar-border: #E6E2DA;
+  --sidebar-ring: #8C9A84;
 }
 
+/* Dark mode - Earthy dark palette */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #1A1F1B;           /* Deep forest night */
+  --foreground: #E8E6E1;           /* Warm off-white */
+  --card: #242A25;                 /* Elevated dark */
+  --card-foreground: #E8E6E1;
+  --popover: #242A25;
+  --popover-foreground: #E8E6E1;
+  --muted: #2D3A31;
+  --muted-foreground: #9CA89E;
+  --primary: #A4B89A;              /* Lighter sage for dark mode */
+  --primary-foreground: #1A1F1B;
+  --secondary: #3D4A3F;
+  --secondary-foreground: #E8E6E1;
+  --accent: #D4917D;               /* Lighter terracotta */
+  --accent-foreground: #1A1F1B;
+  --border: #3D4A3F;
+  --input: #3D4A3F;
+  --ring: #A4B89A;
+  --destructive: #D4917D;
+  --sidebar: #1A1F1B;
+  --sidebar-foreground: #E8E6E1;
+  --sidebar-primary: #A4B89A;
+  --sidebar-primary-foreground: #1A1F1B;
+  --sidebar-accent: #2D3A31;
+  --sidebar-accent-foreground: #E8E6E1;
+  --sidebar-border: #3D4A3F;
+  --sidebar-ring: #A4B89A;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Typography defaults */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    @apply font-semibold tracking-tight;
+  }
+
+  /* Focus states - Sage green ring */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Botanical Button - Primary (Pill shaped) */
+  .btn-botanical {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply rounded-full px-8 py-3;
+    @apply bg-foreground text-background;
+    @apply text-sm font-medium uppercase tracking-widest;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-foreground/90 hover:shadow-lg;
+    @apply active:scale-[0.98];
+  }
+
+  /* Botanical Button - Secondary (Outlined) */
+  .btn-botanical-outline {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply rounded-full px-8 py-3;
+    @apply bg-transparent border border-primary text-primary;
+    @apply text-sm font-medium uppercase tracking-widest;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply active:scale-[0.98];
+  }
+
+  /* Botanical Card */
+  .card-botanical {
+    @apply bg-card rounded-3xl;
+    @apply transition-all duration-500 ease-out;
+    @apply hover:-translate-y-1;
+    box-shadow: 0 4px 6px -1px rgba(45, 58, 49, 0.05);
+  }
+
+  .card-botanical:hover {
+    box-shadow: 0 20px 40px -10px rgba(45, 58, 49, 0.1);
+  }
+
+  /* Arch Image Container */
+  .arch-image {
+    @apply overflow-hidden;
+    border-radius: 200px 200px 24px 24px;
+  }
+
+  /* Section spacing */
+  .section-botanical {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  /* Heading styles */
+  .heading-botanical {
+    font-family: var(--font-serif);
+    @apply text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight;
+  }
+
+  .heading-botanical-sm {
+    font-family: var(--font-serif);
+    @apply text-2xl md:text-3xl font-semibold text-foreground;
+  }
+
+  /* Italic emphasis for headlines */
+  .italic-emphasis {
+    font-family: var(--font-serif);
+    @apply italic;
+  }
+}
+
+@layer utilities {
+  /* Font utilities */
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  /* Botanical shadows */
+  .shadow-botanical {
+    box-shadow: 0 4px 6px -1px rgba(45, 58, 49, 0.05);
+  }
+
+  .shadow-botanical-md {
+    box-shadow: 0 10px 15px -3px rgba(45, 58, 49, 0.05);
+  }
+
+  .shadow-botanical-lg {
+    box-shadow: 0 20px 40px -10px rgba(45, 58, 49, 0.1);
+  }
+
+  .shadow-botanical-xl {
+    box-shadow: 0 25px 50px -12px rgba(45, 58, 49, 0.15);
+  }
+
+  /* Touch-friendly tap targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Text balance for headings */
+  .text-balance {
+    text-wrap: balance;
   }
 }
