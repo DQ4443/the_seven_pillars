@@ -1,0 +1,10 @@
+export { Header } from "./header";
+export { Hero } from "./hero";
+export { AboutDrRicky } from "./about-dr-ricky";
+export { SuccessStories } from "./success-stories";
+export { Timetable } from "./timetable";
+export { UpcomingEvents } from "./upcoming-events";
+export { FAQ } from "./faq";
+export { Location } from "./location";
+export { Contact } from "./contact";
+export { Footer } from "./footer";
