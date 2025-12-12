@@ -13,6 +13,15 @@ import {
 } from "@/components/ui/table";
 import { timetableData, days, timeSlots, getClassByDayAndTime, DayOfWeek } from "@/data/timetable";
 import { Clock, Users, DollarSign, Monitor } from "lucide-react";
+import {
+  SectionHeader,
+  SectionTitle,
+  SectionSubtitle,
+  FadeInUp,
+  Stagger,
+  StaggerItem,
+  ScaleIn,
+} from "./animations";
 
 export function Timetable() {
   const { language, t } = useLanguage();
@@ -21,36 +30,42 @@ export function Timetable() {
     <section id="timetable" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <SectionHeader className="text-center mb-8">
+          <SectionTitle className="text-3xl md:text-4xl font-bold text-primary mb-4">
             {t.timetable.title}
-          </h2>
-          <p className="text-xl text-muted-foreground mb-2">
+          </SectionTitle>
+          <SectionSubtitle className="text-xl text-muted-foreground mb-2">
             {t.timetable.subtitle}
-          </p>
-          <p className="text-lg font-medium text-foreground">
+          </SectionSubtitle>
+          <SectionSubtitle className="text-lg font-medium text-foreground">
             {t.timetable.termDates}
-          </p>
-        </div>
+          </SectionSubtitle>
+        </SectionHeader>
 
         {/* Info badges */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
-          <Badge variant="secondary" className="px-3 py-1.5 text-sm">
-            <Users className="h-4 w-4 mr-1.5" />
-            {t.timetable.classSize}
-          </Badge>
-          <Badge variant="secondary" className="px-3 py-1.5 text-sm">
-            <DollarSign className="h-4 w-4 mr-1.5" />
-            {t.timetable.pricing}
-          </Badge>
-          <Badge variant="secondary" className="px-3 py-1.5 text-sm">
-            <Monitor className="h-4 w-4 mr-1.5" />
-            {t.timetable.note}
-          </Badge>
-        </div>
+        <Stagger fast className="flex flex-wrap justify-center gap-3 mb-8">
+          <StaggerItem>
+            <Badge variant="secondary" className="px-3 py-1.5 text-sm">
+              <Users className="h-4 w-4 mr-1.5" />
+              {t.timetable.classSize}
+            </Badge>
+          </StaggerItem>
+          <StaggerItem>
+            <Badge variant="secondary" className="px-3 py-1.5 text-sm">
+              <DollarSign className="h-4 w-4 mr-1.5" />
+              {t.timetable.pricing}
+            </Badge>
+          </StaggerItem>
+          <StaggerItem>
+            <Badge variant="secondary" className="px-3 py-1.5 text-sm">
+              <Monitor className="h-4 w-4 mr-1.5" />
+              {t.timetable.note}
+            </Badge>
+          </StaggerItem>
+        </Stagger>
 
         {/* Desktop Table View */}
-        <div className="hidden lg:block overflow-x-auto">
+        <FadeInUp className="hidden lg:block overflow-x-auto">
           <Card>
             <CardContent className="p-0">
               <Table>
@@ -108,57 +123,59 @@ export function Timetable() {
               </Table>
             </CardContent>
           </Card>
-        </div>
+        </FadeInUp>
 
         {/* Mobile Card View */}
-        <div className="lg:hidden space-y-6">
+        <Stagger className="lg:hidden space-y-6">
           {days.map((day) => {
             const dayClasses = timetableData.filter((c) => c.day === day);
             if (dayClasses.length === 0) return null;
 
             return (
-              <Card key={day}>
-                <CardHeader className="bg-primary text-primary-foreground py-3">
-                  <CardTitle className="text-lg">
-                    {t.timetable.days[day]}
-                    <span className="text-sm font-normal opacity-80 ml-2">({day})</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <div className="divide-y">
-                    {dayClasses.map((classSession) => (
-                      <div
-                        key={classSession.id}
-                        className={`p-4 ${classSession.isTBD ? "bg-muted/30" : ""}`}
-                      >
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <p className="font-medium text-foreground">
-                              {language === "zh"
-                                ? classSession.subject.zh
-                                : classSession.subject.en}
-                            </p>
-                            {!classSession.isTBD && (
-                              <p className="text-sm text-muted-foreground">
+              <StaggerItem key={day}>
+                <Card>
+                  <CardHeader className="bg-primary text-primary-foreground py-3">
+                    <CardTitle className="text-lg">
+                      {t.timetable.days[day]}
+                      <span className="text-sm font-normal opacity-80 ml-2">({day})</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="divide-y">
+                      {dayClasses.map((classSession) => (
+                        <div
+                          key={classSession.id}
+                          className={`p-4 ${classSession.isTBD ? "bg-muted/30" : ""}`}
+                        >
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <p className="font-medium text-foreground">
                                 {language === "zh"
-                                  ? classSession.subject.en
-                                  : classSession.subject.zh}
+                                  ? classSession.subject.zh
+                                  : classSession.subject.en}
                               </p>
-                            )}
+                              {!classSession.isTBD && (
+                                <p className="text-sm text-muted-foreground">
+                                  {language === "zh"
+                                    ? classSession.subject.en
+                                    : classSession.subject.zh}
+                                </p>
+                              )}
+                            </div>
+                            <Badge variant="outline" className="shrink-0">
+                              <Clock className="h-3 w-3 mr-1" />
+                              {classSession.time}
+                            </Badge>
                           </div>
-                          <Badge variant="outline" className="shrink-0">
-                            <Clock className="h-3 w-3 mr-1" />
-                            {classSession.time}
-                          </Badge>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             );
           })}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

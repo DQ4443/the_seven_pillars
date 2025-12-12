@@ -4,6 +4,14 @@ import { useLanguage } from "@/lib/i18n/context";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, ExternalLink } from "lucide-react";
+import {
+  SectionHeader,
+  SectionTitle,
+  SectionSubtitle,
+  FadeInUp,
+  FadeIn,
+  TapScale,
+} from "./animations";
 
 const ADDRESS = "15 Rivette Street, Scoresby, VIC 3179";
 const GOOGLE_MAPS_EMBED_URL =
@@ -17,31 +25,33 @@ export function Location() {
     <section id="location" className="py-16 md:py-24 bg-muted/50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+        <SectionHeader className="text-center mb-12">
+          <SectionTitle className="text-3xl md:text-4xl font-bold text-primary mb-4">
             {t.location.title}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          </SectionTitle>
+          <SectionSubtitle className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t.location.subtitle}
-          </p>
-        </div>
+          </SectionSubtitle>
+        </SectionHeader>
 
-        <div className="max-w-4xl mx-auto">
+        <FadeInUp className="max-w-4xl mx-auto">
           <Card className="overflow-hidden">
             {/* Map */}
-            <div className="aspect-video w-full bg-muted">
-              <iframe
-                src={GOOGLE_MAPS_EMBED_URL}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Dr Ricky's Education Location"
-                className="w-full h-full"
-              />
-            </div>
+            <FadeIn delay={0.15}>
+              <div className="aspect-video w-full bg-muted">
+                <iframe
+                  src={GOOGLE_MAPS_EMBED_URL}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Dr Ricky's Education Location"
+                  className="w-full h-full"
+                />
+              </div>
+            </FadeIn>
 
             <CardContent className="p-6">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -55,20 +65,22 @@ export function Location() {
                   </div>
                 </div>
 
-                <Button asChild variant="outline" className="shrink-0">
-                  <a
-                    href={GOOGLE_MAPS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    {t.location.openInMaps}
-                  </a>
-                </Button>
+                <TapScale>
+                  <Button asChild variant="outline" className="shrink-0">
+                    <a
+                      href={GOOGLE_MAPS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="h-4 w-4 mr-2" />
+                      {t.location.openInMaps}
+                    </a>
+                  </Button>
+                </TapScale>
               </div>
             </CardContent>
           </Card>
-        </div>
+        </FadeInUp>
       </div>
     </section>
   );
