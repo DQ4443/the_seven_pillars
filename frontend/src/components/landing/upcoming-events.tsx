@@ -79,7 +79,7 @@ export function UpcomingEvents() {
                     {/* Date badge */}
                     <div className="mb-4">
                       <motion.span
-                        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ${accentColors[index]}`}
+                        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-base font-medium ${accentColors[index]}`}
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
@@ -108,7 +108,7 @@ export function UpcomingEvents() {
                       <ShimmerEffect>
                         <button
                           onClick={scrollToContact}
-                          className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-transparent border border-primary text-primary text-sm font-medium uppercase tracking-widest transition-all duration-300 hover:bg-primary hover:text-primary-foreground group"
+                          className="w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 bg-transparent border border-primary text-primary text-base font-medium uppercase tracking-widest transition-all duration-300 hover:bg-primary hover:text-primary-foreground group"
                         >
                           {t.events.registerButton}
                           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />

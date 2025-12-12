@@ -41,19 +41,19 @@ export function Timetable() {
           <StaggerItem>
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border shadow-botanical">
               <Users className="h-4 w-4 text-primary" strokeWidth={1.5} />
-              <span className="text-sm font-medium text-foreground">{t.timetable.classSize}</span>
+              <span className="text-base font-medium text-foreground">{t.timetable.classSize}</span>
             </div>
           </StaggerItem>
           <StaggerItem>
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border shadow-botanical">
               <DollarSign className="h-4 w-4 text-primary" strokeWidth={1.5} />
-              <span className="text-sm font-medium text-foreground">{t.timetable.pricing}</span>
+              <span className="text-base font-medium text-foreground">{t.timetable.pricing}</span>
             </div>
           </StaggerItem>
           <StaggerItem>
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-card border border-border shadow-botanical">
               <Monitor className="h-4 w-4 text-primary" strokeWidth={1.5} />
-              <span className="text-sm font-medium text-foreground">{t.timetable.note}</span>
+              <span className="text-base font-medium text-foreground">{t.timetable.note}</span>
             </div>
           </StaggerItem>
         </Stagger>
@@ -73,7 +73,7 @@ export function Timetable() {
                   {days.map((day) => (
                     <th key={day} className="px-4 py-4 text-center font-medium">
                       <div>{t.timetable.days[day]}</div>
-                      <div className="text-xs font-normal opacity-70">({day})</div>
+                      <div className="text-sm font-normal opacity-70">({day})</div>
                     </th>
                   ))}
                 </tr>
@@ -126,7 +126,7 @@ export function Timetable() {
                   <div className="bg-foreground text-background px-6 py-4">
                     <h3 className="font-serif text-lg font-semibold">
                       {t.timetable.days[day]}
-                      <span className="text-sm font-normal opacity-70 ml-2">({day})</span>
+                      <span className="text-base font-normal opacity-70 ml-2">({day})</span>
                     </h3>
                   </div>
                   <div className="divide-y divide-border">
@@ -141,12 +141,12 @@ export function Timetable() {
                               {language === "zh" ? classSession.subject.zh : classSession.subject.en}
                             </p>
                             {!classSession.isTBD && (
-                              <p className="text-sm text-muted-foreground mt-0.5">
+                              <p className="text-base text-muted-foreground mt-0.5">
                                 {language === "zh" ? classSession.subject.en : classSession.subject.zh}
                               </p>
                             )}
                           </div>
-                          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted text-sm font-medium text-foreground shrink-0">
+                          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted text-base font-medium text-foreground shrink-0">
                             <Clock className="h-3.5 w-3.5" strokeWidth={1.5} />
                             {classSession.time}
                           </div>

@@ -6,8 +6,6 @@ import {
   SectionHeader,
   SectionTitle,
   SectionSubtitle,
-  FadeInUp,
-  FadeInLeft,
   FadeInRight,
   ScaleIn,
   Stagger,
@@ -15,7 +13,10 @@ import {
   CardHover,
 } from "./animations";
 
-const PHONE_NUMBER = "+61 415 435 987";
+const PHONE_NUMBERS = [
+  { number: "0435 690 596", availability: { zh: "上午 9:00 - 中午 12:00", en: "9am - 12pm" } },
+  { number: "0415 435 987", availability: { zh: "晚上 8:45 以后", en: "After 8:45pm" } },
+];
 const EMAIL = "qu.ricky@gmail.com";
 
 export function Contact() {
@@ -60,25 +61,29 @@ export function Contact() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Info */}
             <Stagger className="space-y-4">
-              {/* Phone */}
-              <StaggerItem>
-                <CardHover>
-                  <a
-                    href={`tel:${PHONE_NUMBER.replace(/\s/g, "")}`}
-                    className="card-botanical p-6 flex items-center gap-4 group"
-                  >
-                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/20">
-                      <Phone className="h-6 w-6 text-primary" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">{t.contact.phone}</p>
-                      <p className="font-serif text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                        {PHONE_NUMBER}
-                      </p>
-                    </div>
-                  </a>
-                </CardHover>
-              </StaggerItem>
+              {/* Phone Numbers */}
+              {PHONE_NUMBERS.map((phone, index) => (
+                <StaggerItem key={index}>
+                  <CardHover>
+                    <a
+                      href={`tel:${phone.number.replace(/\s/g, "")}`}
+                      className="card-botanical p-6 flex items-center gap-4 group"
+                    >
+                      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/20">
+                        <Phone className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                      </div>
+                      <div>
+                        <p className="text-base text-muted-foreground mb-1">
+                          {t.contact.phone} • {language === "zh" ? phone.availability.zh : phone.availability.en}
+                        </p>
+                        <p className="font-serif text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                          {phone.number}
+                        </p>
+                      </div>
+                    </a>
+                  </CardHover>
+                </StaggerItem>
+              ))}
 
               {/* Email */}
               <StaggerItem>
@@ -91,7 +96,7 @@ export function Contact() {
                       <Mail className="h-6 w-6 text-primary" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">{t.contact.email}</p>
+                      <p className="text-base text-muted-foreground mb-1">{t.contact.email}</p>
                       <p className="font-serif text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                         {EMAIL}
                       </p>
@@ -112,14 +117,14 @@ export function Contact() {
                     {t.contact.wechat}
                   </h3>
                 </div>
-                <p className="text-sm text-muted-foreground mb-6 pl-13">{t.contact.scanQR}</p>
+                <p className="text-base text-muted-foreground mb-6 pl-13">{t.contact.scanQR}</p>
 
                 <div className="grid grid-cols-2 gap-4">
                   {/* QR Code Placeholder 1 */}
                   <div className="aspect-square bg-muted rounded-2xl flex items-center justify-center border border-border">
                     <div className="text-center text-muted-foreground p-4">
                       <MessageCircle className="h-10 w-10 mx-auto mb-2 text-[#07C160]/60" strokeWidth={1} />
-                      <p className="text-xs font-medium">
+                      <p className="text-sm font-medium">
                         {language === "zh" ? "微信二维码 1" : "WeChat QR 1"}
                       </p>
                     </div>
@@ -129,7 +134,7 @@ export function Contact() {
                   <div className="aspect-square bg-muted rounded-2xl flex items-center justify-center border border-border">
                     <div className="text-center text-muted-foreground p-4">
                       <MessageCircle className="h-10 w-10 mx-auto mb-2 text-[#07C160]/60" strokeWidth={1} />
-                      <p className="text-xs font-medium">
+                      <p className="text-sm font-medium">
                         {language === "zh" ? "微信二维码 2" : "WeChat QR 2"}
                       </p>
                     </div>

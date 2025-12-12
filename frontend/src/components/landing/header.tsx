@@ -59,7 +59,7 @@ export function Header() {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {t.nav[item.key as keyof typeof t.nav]}
               </a>
@@ -71,7 +71,7 @@ export function Header() {
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-300"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full text-base font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-300"
             >
               <Globe className="h-4 w-4" strokeWidth={1.5} />
               <span>{language === "zh" ? "EN" : "中文"}</span>
@@ -80,7 +80,7 @@ export function Header() {
             {/* CTA Button - Desktop */}
             <button
               onClick={() => scrollToSection("#contact")}
-              className="hidden md:inline-flex items-center justify-center rounded-full px-6 py-2.5 bg-foreground text-background text-sm font-medium uppercase tracking-widest transition-all duration-300 hover:bg-foreground/90 hover:shadow-botanical-md"
+              className="hidden md:inline-flex items-center justify-center rounded-full px-6 py-2.5 bg-foreground text-background text-base font-medium uppercase tracking-widest transition-all duration-300 hover:bg-foreground/90 hover:shadow-botanical-md"
             >
               {t.nav.registerInterest}
             </button>
@@ -141,7 +141,7 @@ export function Header() {
                     {/* Language Toggle */}
                     <button
                       onClick={toggleLanguage}
-                      className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-border text-sm font-medium text-foreground hover:bg-muted transition-colors duration-300"
+                      className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-border text-base font-medium text-foreground hover:bg-muted transition-colors duration-300"
                     >
                       <Globe className="h-4 w-4" strokeWidth={1.5} />
                       {language === "zh" ? "Switch to English" : "切换到中文"}
@@ -150,7 +150,7 @@ export function Header() {
                     {/* CTA Button */}
                     <button
                       onClick={() => scrollToSection("#contact")}
-                      className="w-full py-4 rounded-full bg-foreground text-background text-sm font-medium uppercase tracking-widest transition-all duration-300 hover:bg-foreground/90"
+                      className="w-full py-4 rounded-full bg-foreground text-background text-base font-medium uppercase tracking-widest transition-all duration-300 hover:bg-foreground/90"
                     >
                       {t.nav.registerInterest}
                     </button>

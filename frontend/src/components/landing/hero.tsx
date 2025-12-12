@@ -111,7 +111,7 @@ export function Hero() {
               <ShimmerEffect>
                 <button
                   onClick={scrollToContact}
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-10 py-4 bg-foreground text-background text-sm font-medium uppercase tracking-widest transition-all duration-300 hover:bg-foreground/90 hover:shadow-botanical-lg active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-10 py-4 bg-foreground text-background text-base font-medium uppercase tracking-widest transition-all duration-300 hover:bg-foreground/90 hover:shadow-botanical-lg active:scale-[0.98]"
                 >
                   {t.hero.cta}
                 </button>

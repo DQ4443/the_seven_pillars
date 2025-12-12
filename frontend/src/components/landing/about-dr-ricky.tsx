@@ -15,7 +15,12 @@ import {
   CardHover,
   MorphingBlob,
 } from "./animations";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
 import { useRef } from "react";
 
 const YOUTUBE_VIDEO_ID = "3CCxbjoAhLg";
@@ -36,7 +41,11 @@ export function AboutDrRicky() {
   const photoY = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   return (
-    <section ref={sectionRef} id="about" className="section-botanical bg-background relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="about"
+      className="section-botanical bg-background relative overflow-hidden"
+    >
       {/* Top fade to blend with hero section gradient */}
       <div className="absolute top-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
 
@@ -70,12 +79,13 @@ export function AboutDrRicky() {
           </SectionSubtitle>
         </SectionHeader>
 
+        {/* Mobile: Photo first, then story. Desktop: Photo and story side by side in left column */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left: Arch Photo + Story */}
           <FadeInLeft className="space-y-8">
-            {/* Dr. Ricky Photo - Arch Shape with Parallax */}
+            {/* Dr. Ricky Photo - Arch Shape with Parallax - Shows first on mobile */}
             <motion.div
-              className="w-[52%] mx-auto aspect-[3/4] bg-muted relative border border-border overflow-hidden shadow-botanical-lg"
+              className="w-[52%] mx-auto aspect-[3/4] bg-muted relative border border-border overflow-hidden shadow-botanical-lg lg:mb-0 -mt-8 lg:mt-0"
               style={{
                 borderRadius: "90px 90px 12px 12px",
                 y: shouldReduceMotion ? 0 : photoY,
@@ -125,9 +135,15 @@ export function AboutDrRicky() {
                       >
                         <motion.div
                           className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5"
-                          whileHover={{ scale: 1.2, backgroundColor: "rgba(140, 154, 132, 0.3)" }}
+                          whileHover={{
+                            scale: 1.2,
+                            backgroundColor: "rgba(140, 154, 132, 0.3)",
+                          }}
                         >
-                          <CheckCircle className="h-4 w-4 text-primary" strokeWidth={1.5} />
+                          <CheckCircle
+                            className="h-4 w-4 text-primary"
+                            strokeWidth={1.5}
+                          />
                         </motion.div>
                         <span className="text-foreground">{credential}</span>
                       </motion.li>
@@ -156,9 +172,15 @@ export function AboutDrRicky() {
                       >
                         <motion.div
                           className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5"
-                          whileHover={{ scale: 1.2, backgroundColor: "rgba(194, 123, 102, 0.3)" }}
+                          whileHover={{
+                            scale: 1.2,
+                            backgroundColor: "rgba(194, 123, 102, 0.3)",
+                          }}
                         >
-                          <CheckCircle className="h-4 w-4 text-accent" strokeWidth={1.5} />
+                          <CheckCircle
+                            className="h-4 w-4 text-accent"
+                            strokeWidth={1.5}
+                          />
                         </motion.div>
                         <span className="text-foreground">{point}</span>
                       </motion.li>
@@ -192,10 +214,12 @@ export function AboutDrRicky() {
                 href={`https://www.youtube.com/watch?v=${YOUTUBE_VIDEO_ID}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+                className="inline-flex items-center gap-2 text-base text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 <ExternalLink className="h-4 w-4" strokeWidth={1.5} />
-                <span>{language === "zh" ? "在YouTube中打开" : "Open in YouTube"}</span>
+                <span>
+                  {language === "zh" ? "在YouTube中打开" : "Open in YouTube"}
+                </span>
               </a>
             </div>
           </div>

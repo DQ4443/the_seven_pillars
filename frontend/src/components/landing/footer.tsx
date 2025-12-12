@@ -24,7 +24,7 @@ export function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-sm text-muted-foreground">{t.footer.copyright}</p>
+          <p className="text-base text-muted-foreground">{t.footer.copyright}</p>
         </div>
 
         {/* Decorative element */}

@@ -19,7 +19,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 
 export function SuccessStories() {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -96,17 +96,18 @@ export function SuccessStories() {
               </div>
 
               {/* Timeline */}
-              <div className="relative pl-6">
-                {/* Timeline line */}
-                <div className="absolute left-[7px] top-2 bottom-2 w-px bg-border" />
+              <div className="relative ml-1.5">
+                {/* Timeline line - offset by 5px (half of 12px dot - half of 2px line = 6px - 1px = 5px) */}
+                <div className="absolute left-[5px] top-0 bottom-0 w-0.5 bg-border" />
 
-                <div className="space-y-6">
+                <div className="space-y-6 pl-6">
                   {t.success.twinsStory.timeline.map((item, index) => (
                     <TimelineItem key={index} index={index}>
                       <div className="flex items-start gap-4 relative">
+                        {/* Dot - 12px wide (w-3), positioned at left edge of content area */}
                         <div className="absolute -left-6 top-1.5 w-3 h-3 rounded-full bg-accent border-2 border-card z-10" />
                         <div className="flex-1">
-                          <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/5 text-primary rounded-full mb-2">
+                          <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/5 text-primary rounded-full mb-2">
                             {item.year}
                           </span>
                           <p className="text-foreground leading-relaxed">{item.achievement}</p>
@@ -150,11 +151,11 @@ export function SuccessStories() {
                           whileHover={{ scale: 1.1 }}
                           transition={{ type: "spring", stiffness: 300 }}
                         >
-                          <span className="text-sm font-medium text-foreground">
+                          <span className="text-base font-medium text-foreground">
                             {testimonial.author.charAt(0)}
                           </span>
                         </motion.div>
-                        <p className="text-sm text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300">
+                        <p className="text-base text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300">
                           {testimonial.author}
                         </p>
                       </div>
