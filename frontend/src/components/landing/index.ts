@@ -1,10 +1,21 @@
 export { Header } from "./header";
 export { Hero } from "./hero";
+export { Testimonials } from "./testimonials";
 export { PainPoints } from "./pain-points";
+export { FiveFLoop } from "./five-f-loop";
+export { VideoSection } from "./video-section";
+export { Evidence } from "./evidence";
+export { Demographics } from "./demographics";
+export { Timetable } from "./timetable";
+export { Location } from "./location";
+export { FAQ } from "./faq";
+export { Enrollment } from "./enrollment";
+export { Contact } from "./contact";
+export { Footer } from "./footer";
+export { StickyConversionBar } from "./sticky-bar";
+
+// Legacy exports (kept for compatibility)
 export { AboutDrRicky } from "./about-dr-ricky";
 export { SuccessStories } from "./success-stories";
 export { Courses } from "./courses";
-export { FAQ } from "./faq";
 export { Admissions } from "./admissions";
-export { Footer } from "./footer";
-export { StickyConversionBar } from "./sticky-bar";

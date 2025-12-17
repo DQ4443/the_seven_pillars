@@ -1,196 +1,198 @@
-# MASTER DESIGN SPECIFICATION: Dr. Ricky's Education
+This is a decisive and sophisticated shift. Moving from "The Lab" to "Elite Mentorship" (Crimson Education vibes) elevates the brand value significantly. It positions the service not just as "tutoring," but as Cognitive Reconstruction.
 
-**Version:** 1.0
-**Target Device:** Mobile First (Responsive to Desktop)
-**Vibe:** "Private Medical Practice meets Ivy League."
+We are pivoting the aesthetic from "Blueprint/Schematic" to "Prestigious/Institutional." Think: Serif fonts, deep navy blues, warm gold accents, generous whitespace, and high-end photography.
 
----
+Here is the Master Design Specification v8.0, detailed in the exact order you requested.
 
-## I. The Design System (Global Styles)
+MASTER DESIGN SPECIFICATION v8.0: "The Ivy League Pathway"
+Core Narrative: The shift from "External Pressure" (Passive) to "Internal Drive" (Active).
 
-### 1. Color Palette
+Visual Theme: "Modern Academic Excellence."
 
-| Role | Color | Hex | Usage |
-|------|-------|-----|-------|
-| Primary (Authority) | Oxford Blue | `#0E2A47` | Headers, Footer, Primary Buttons |
-| Secondary (Prestige) | Muted Gold | `#C5A059` | Borders, highlights, "Book Assessment" button |
-| Background | Warm Alabaster | `#F9F9F7` | The canvas |
-| Text | Charcoal | `#333333` | Never pure black |
+Aesthetic:
 
-### 2. Typography
+Primary: Oxford Blue (#002147), Pure White (#FFFFFF).
 
-| Type | Font | Notes |
-|------|------|-------|
-| English Headings | Merriweather | Bold/Regular |
-| Chinese Headings | Noto Serif SC | Bold |
-| Body Copy | Inter or Lato | Line-height: 1.6 for EN, 1.8 for CN |
+Accent: Satin Gold (#C5B358) for success states/CTAs.
 
-### 3. Global UI Elements
+Typography: Merriweather (Serif) for Headlines (Authority), Inter (Sans-Serif) for Body (Modernity).
 
-#### Mobile Sticky Conversion Bar
-- **Position:** Fixed Bottom, Z-Index 999
+1. COMPONENT: HERO (The Vision)
+   Goal: Instant Authority. High-end academic positioning. Layout: Split Screen or Centered overlay on high-quality imagery.
 
-| Button | Width | Color | Icon/Label | Interaction |
-|--------|-------|-------|------------|-------------|
-| Left | 40% | Blue | [WeChat] WeChat / 微信 | On tap → Copies ID to clipboard → Toast popup: "ID Copied!" |
-| Right | 60% | Gold | Book Diagnostic / 预约诊断 | Smooth scroll to Admissions section |
+Background: A high-res photo of Dr. Ricky teaching in a bright, clean, premium classroom. (Not a dark lab).
 
-#### Header
-- **Logo:** Text-based Serif: "Dr. Ricky's Education"
-- **Toggle:** Simple text link `EN | 中文`
+The Animation: Subtle, elegant motion. A "Gold Thread" (SVG line) weaves through the air near the whiteboard, symbolizing the connection of logic.
 
----
+The Copy:
 
-## II. Page 1: HOME (The Hook)
+Slogan: "From 'Have to Learn' to 'Want to Learn'."
 
-### Section A: Hero (Full Viewport Height)
+Sub-headline: "We don't just teach the curriculum. We rebuild the student's psychological approach to learning using the 5F Holistic Intelligence Cycle."
 
-**Visual:** High-res photo of Dr. Ricky teaching (warm lighting), dark gradient overlay at bottom for text readability.
+CTA: [Apply for Diagnostic Assessment] (Gold Button, Serif text).
 
-**Headline Component:**
-- **CN:** 科学家带出来的孩子，逻辑才是一切。
-- **EN:** Scientist-Led Education. Logic is Everything.
+2. COMPONENT: TESTIMONIALS (Social Proof)
+   Goal: Immediate validation before introducing the problem. "Hear what our parents think." Visual: "The Wall of Excellence." A premium horizontal scroll (Carousel).
 
-**Sub-Headline:**
-- **CN:** 从协和医科大学博士到您孩子的私房导师。用科学家的严谨逻辑，对中小学课程进行"降维打击"。
-- **EN:** From top-tier medical research to your child's classroom. I don't just teach the curriculum—I teach the scientific method of thinking that crushes the VCE.
+Design: White cards with a subtle shadow (elevation).
 
-**CTA Button (Desktop Only - Mobile uses Sticky Bar):**
-- **Label:** 预约学业诊断 (Book Diagnostic)
+Content (From your inputs):
 
-### Section B: The "Pain Point" Selector (Interactive Grid)
+Card 1 (The Credential): "I saw a PhD from Tsinghua/Peking Union... teaching my middle school daughter. It felt surreal." — Parent.
 
-**Layout:** 2x2 Grid of cards with Icons
-**UX:** Tap card → Expands drawer with solution
+Card 2 (The Engagement): "Dr. Ricky tells stories from his time as a scientist... Science is actually interesting!" — Student.
 
-| Card | Label | Reveal Text |
-|------|-------|-------------|
-| 1 | Shy in Class? / 孩子不敢提问？ | "I cold-call with kindness. No one hides in a class of 10." |
-| 2 | Hates Math? / 讨厌数学？ | "They don't hate math; they hate being confused. Logic fixes that." |
-| 3 | Scores Plateaued? / 成绩瓶颈期？ | "We stop memorizing and start understanding first principles." |
+Card 3 (The Introvert): "My son never dared to speak up... Now he stays focused because he knows Dr. Ricky will call on him." — Parent.
 
----
+Card 4 (The Private Chef): "He is like a 'Private Chef' for education. He knows exactly where my child struggles." — Parent.
 
-## III. Page 2: ABOUT (The Authority)
+3. COMPONENT: PAIN POINTS (The Diagnosis)
+   Goal: Address the "Why". Use Attribution Theory & Locus of Control. Visual: "The Psychology of Failure vs. Success." Two contrasting columns.
 
-### Section A: The Narrative
+Column Left (The Status Quo - Gray/Muted): "The External Trap" (External Locus of Control).
 
-**Headline:**
-- **CN:** "Over-Qualified" ? 不，这是对教育的降维打击
-- **EN:** The Scientist in the Classroom
+Icon: A broken chain.
 
-**Body Text:**
-- **CN:** 我曾是协和医科大学和清华大学的博士... 许多家长问我，为什么如此"高学历"却选择教书？因为我发现，塑造一个孩子的思维逻辑，比科研更具挑战性。
-- **EN:** Why does a medical researcher teach Year 8 Science? Because shaping a young mind is more complex—and more rewarding—than developing a new drug.
+Symptoms:
 
-### Section B: The Credential Stack (Vertical Timeline)
+Behavior: "Addicted to AI for answers. Homework is a chore."
 
-**Design:** A vertical line connecting 4 distinct nodes.
+Mindset: "Success is luck. Failure is 'the teacher's fault'."
 
-| Node | Credential |
-|------|------------|
-| 1 | PhD, Peking Union Medical College & Tsinghua University (中国协和医科大学 & 清华大学医学博士) |
-| 2 | Post-Doctoral Fellow, Henry Ford Hospital, USA (美国 Henry Ford Hospital 博士后) |
-| 3 | Research Scientist, Kyoto University, Japan (日本京都大学医学部 研究员) |
-| 4 | The Dad Era: Father of Twins → Berkeley & Silicon Valley |
+Result: The "Homework War" between parent and child.
 
-### Section C: The "Twins" Feature (Bento Box)
+Column Right (The Solution - Blue/Gold): "The Internal Engine" (Dr. Ricky's Way).
 
-**Design:** Gold border box. Photo of twins.
+Icon: A lit torch.
 
-**Headline:** The Proof of Concept (成功案例/教育蓝图)
+Transformation:
 
-**Text:** "I didn't just study education theory. I applied my scientific background to my own children. They went to Berkeley and Silicon Valley. Now, I use that exact same rigorous methodology to teach your child."
+Behavior: "Uses logic to derive answers. Seeks challenges."
 
----
+Mindset: "Success is effort. Failure is data for improvement."
 
-## IV. Page 3: SUCCESS STORIES (The Proof)
+Result: Psychological Safety & Intrinsic Drive.
 
-### Section A: The Wall of Truth (Masonry Grid)
+4. COMPONENT: THE SOLUTION (The 5F Loop)
+   Goal: Visualizing the "Holistic Intelligence Cycle." Visual: "The Virtuous Cycle." NOT a linear flowchart. A circular, interactive "Flywheel."
 
-**Design:** Cards of varying heights. Bold Gold text highlights key phrases.
+Interaction: The user sees a circle divided into 5 segments. The wheel rotates slowly. Hovering over a segment expands it (Accordion style or Pop-over) to reveal the deep psychology.
 
-#### Testimonial Card 1 (The Engagement)
-- **Tag:** [Year 8 Student]
-- **Highlight:** "Science is finally fun / 讲课生动有趣"
-- **Text:** "Dr. Ricky shares stories from his time as a scientist... suddenly, that huge block of text just makes sense." / "曲博士会在科学课中给我们讲他自己作为科学家和医生的故事... 科学课原来这么有趣！"
+Segment 1: FUN (Psychological Safety)
 
-#### Testimonial Card 2 (The Results)
-- **Tag:** [Parent of Year 7]
-- **Highlight:** "She actually understands it now / 讲课逻辑思维清晰"
-- **Text:** "My daughter loves Dr. Ricky the most because she told me, 'Dad, I actually understood the lesson!'" / "每次课她都真地听懂了，而且题目真得会做了！"
+Concept: Low Anxiety / High Challenge.
 
-#### Testimonial Card 3 (The Personalization)
-- **Tag:** [VCE Parent]
-- **Highlight:** "He truly knows my child / 了解每个孩子的学习情况"
-- **Text:** "When he talks about my child's weaknesses, it matches exactly what I see at home. He is a 'Private Mentor'." / "他所说出来的情况和我在家里辅导的感受完全相同... 这样的老师，是孩子的'私房老师'。"
+Detail: "We replace judgment with curiosity. When the brain feels safe, it opens. We don't criticize effort; we only reward progress."
 
----
+Segment 2: FOCUS (Flow State)
 
-## V. Page 4: COURSES & PRICING (The Product)
+Concept: The CCTV Method (Challenge-Connection-Transformation-View).
 
-### Section A: The Feature List (Icons + Text)
+Detail: "No passive listening. We use 'Cognitive Conflict' to trigger a Flow State. The student becomes the center of the derivation."
 
-| Feature | Description |
-|---------|-------------|
-| Max 10 Students / 小班制 | "Every child gets challenged." |
-| Hybrid Learning / 双模式教学 | "In-person (Scoresby) or Live Zoom." |
-| Video Archive / 课程录像 | "Never miss a lesson due to sickness or camp." |
-| Free Elite Materials / 独家教材免费 | "Cambridge ICE-EM + Custom Problem Sets." |
+Segment 3: FINISH (Executive Function)
 
-### Section B: Course Accordion (Collapsible List)
+Concept: Project-Based Learning.
 
-| Item | Course |
-|------|--------|
-| 1 | Year 6 (Primary to Secondary Prep) |
-| 2 | Year 7-9 (Comprehensive Science & Math) |
-| 3 | **Pre-VCE Strategy (9-10年级 抢跑计划)** ⭐ _Highlight this row in Gold_ |
+Detail: "Homework isn't a task; it's a memory encoding project. We train the brain to Plan, Initiate, and Monitor (Executive Function)."
 
-**Expandable Text for Item 3:** "Finish Unit 1/2 Chemistry or Methods in Year 10. Strategic advantage for ATAR."
+Segment 4: FEEDBACK (Formative Assessment)
 
-### Section C: Pricing Card
+Concept: Diagnosis vs. Answer.
 
-**Design:** Minimalist, clean card.
+Detail: "AI gives answers. We give diagnosis. We identify the specific 'logic gap' that caused the error."
 
-| Element | Value |
-|---------|-------|
-| Price | **$50 AUD / Session** |
-| Subtext | Returning Family Rate (老学员优惠价) |
-| Note | Billed per Term. Material Fees: $0 |
+Segment 5: FIX (Growth Mindset)
 
----
+Concept: Metacognition.
 
-## VI. Page 5: ADMISSIONS (The Gate)
+Detail: "Thinking about thinking. Transforming 'I'm bad at this' into 'I need to debug this step.' Errors become upgrades."
 
-### Section A: The Process Tracker (Horizontal Steps)
+5. COMPONENT: VIDEO
+   Goal: Placeholder for dynamic content. Visual: A large, rounded-corner video container with a "Play" button overlay. Caption: "See the 5F Cycle in Action inside the Classroom."
 
-| Step | Action |
-|------|--------|
-| 1 | Add WeChat (添加微信) |
-| 2 | Download Entrance Test (下载入学测试) |
-| 3 | Receive Diagnosis & Placement (获得诊断报告) |
+6. COMPONENT: DETAILED EVIDENCE (Results)
+   Goal: Concrete academic outcomes (Customer Testimonials Part 2). Visual: "The Case Studies."
 
-### Section B: The Download Area
+Design: A grid of 3 distinct stories.
 
-**Headline:** Results start with a diagnosis. / 拒绝盲目补习，从"诊断"开始。
+Story A: "The Turnaround" (Student went from failing to A+).
 
-**Button (Large, Icon: Download):**
-`[ Download Entrance Test PDF / 下载入学测试题 ]`
+Story B: "The VCE Crusher" (High ATAR result details).
 
-**Subtext:** "This test is harder than school. It is designed to find the gaps in logic." (测试难度高于日校，旨在发现逻辑漏洞)
+Story C: "The Early Starter" (Year 9 student mastering Year 11 Chem).
 
-### Section C: Footer Logistics
+7. COMPONENT: STUDENT DEMOGRAPHICS (The Cohort)
+   Goal: Create a sense of "Elite Community." Parents want their kids to be around other smart kids. Visual: Infographic / Data Visualization using elegant bar charts or donut charts.
 
-| Element | Value |
-|---------|-------|
-| Address | 15 Rivette St, Scoresby, VIC, 3179 |
-| Service Area | Glen Waverley, Wheelers Hill, Wantirna, Caulfield |
-| Copyright | © 2025 Dr. Ricky's Education |
+Headline: "Join a Community of High Achievers."
 
----
+Chart 1: School Composition.
 
-## Implementation Notes
+Data: "40% Private School", "40% Selective Entry", "20% High-Performing Public".
 
-This is the **Master Blueprint**. It merges the architectural layout with the actual copy.
+Chart 2: Ambitions.
 
-Hand this document to a developer, and they can build the site without asking a single question.
+Data: "Medicine/Dentistry", "Law", "Engineering", "Science Research".
+
+Copy: "Your child will learn alongside motivated peers who normalize excellence."
+
+8. COMPONENT: TIMETABLE (The Schedule)
+   Goal: Clarity and Strategy. Visual: A Clean, Tabbed Calendar Interface.
+
+Tabs: Year 9 | Year 10 | VCE Unit 1/2 | VCE Unit 3/4.
+
+The Grid:
+
+Rows: Weekday / Weekend.
+
+Cells: "Chemistry Masterclass (Dr. Ricky)" - Time - Location (Onsite/Hybrid).
+
+Note: Highlight the "Accelerated Pathway" (e.g., Year 10s doing Unit 1/2) in Gold text.
+
+9. COMPONENT: LOCATION (The Campus)
+   Goal: Trust and Physical Presence. Visual: "The Map Card."
+
+Left Side: A styled Google Map (Desaturated colors to match the Navy/Gold theme). Custom pin showing the center.
+
+Right Side: Address & Photo of the building exterior.
+
+Text: "Conveniently located in Scoresby. A dedicated learning environment free from distraction."
+
+Transport Info: "5 mins from Eastlink," "Ample Parking."
+
+10. COMPONENT: FAQ (The Details)
+    Goal: Handle objections. Visual: Clean Accordion List (Thin grey lines separating questions).
+
+Q1: "Is the teaching in English?" (Answer: Yes, 100% English for VCE, Mandarin bridge for complex terms).
+
+Q2: "What if we miss a class?" (Answer: HD Recordings available).
+
+Q3: "Is it suitable for Year 7/8?" (Answer: We focus on Year 9+ for the acceleration pathway).
+
+Q4: "Do you use AI?" (Answer: We use AI as a tool, but we teach the student to be the thinker).
+
+11. COMPONENT: ENROLLMENT PROCESS (The Funnel)
+    Goal: Show that entry is selective/structured. Visual: A Horizontal Step-Process (Stepper).
+
+Step 1: Inquiry. (Fill form / WeChat).
+
+Step 2: The Diagnostic. (A 45-minute logic test, not just knowledge).
+
+Step 3: The Consultation. (Dr. Ricky reviews the results with parents).
+
+Step 4: The Offer. (Placement in the appropriate class level).
+
+12. COMPONENT: CONTACT (The Action)
+    Goal: Conversion. Visual: A split card.
+
+Left: "Ready to upgrade your child's learning engine?"
+
+Right:
+
+Primary Action: QR Code for WeChat (Dominant visual). Caption: "Chat directly with Dr. Ricky's Team."
+
+Secondary Action: Simple Email/Phone form.
+
+Footer: Copyright & Social Links.

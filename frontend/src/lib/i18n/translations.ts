@@ -11,10 +11,10 @@ export const translations = {
     },
 
     hero: {
-      headline: "Scientist-Led Education. Logic is Everything.",
+      headline: "From 'Have to Learn' to 'Want to Learn'.",
       subheadline:
-        "From top-tier medical research to your child's classroom. I don't just teach the curriculum—I teach the scientific method of thinking that crushes the VCE.",
-      cta: "Book Diagnostic",
+        "We don't just teach the curriculum. We rebuild the student's psychological approach to learning using the 5F Holistic Intelligence Cycle.",
+      cta: "Apply for Diagnostic Assessment",
     },
 
     painPoints: {
@@ -69,26 +69,32 @@ export const translations = {
     },
 
     success: {
-      title: "The Wall of Truth",
-      subtitle: "Real feedback from real families",
+      title: "The Wall of Excellence",
+      subtitle: "Hear what our parents think",
       testimonials: [
         {
-          tag: "Year 8 Student",
-          highlight: "Science is finally fun",
+          tag: "Parent",
+          highlight: "A PhD teaching my child",
           quote:
-            "Dr. Ricky shares stories from his time as a scientist... suddenly, that huge block of text just makes sense.",
+            "I saw a PhD from Tsinghua/Peking Union... teaching my middle school daughter. It felt surreal.",
         },
         {
-          tag: "Parent of Year 7",
-          highlight: "She actually understands it now",
+          tag: "Student",
+          highlight: "Science is actually interesting!",
           quote:
-            "My daughter loves Dr. Ricky the most because she told me, 'Dad, I actually understood the lesson!'",
+            "Dr. Ricky tells stories from his time as a scientist... Science is actually interesting!",
         },
         {
-          tag: "VCE Parent",
-          highlight: "He truly knows my child",
+          tag: "Parent of Introvert",
+          highlight: "He stays focused now",
           quote:
-            "When he talks about my child's weaknesses, it matches exactly what I see at home. He is a 'Private Mentor'.",
+            "My son never dared to speak up... Now he stays focused because he knows Dr. Ricky will call on him.",
+        },
+        {
+          tag: "Parent",
+          highlight: "Like a Private Chef",
+          quote:
+            "He is like a 'Private Chef' for education. He knows exactly where my child struggles.",
         },
       ],
     },
@@ -242,10 +248,10 @@ export const translations = {
     },
 
     hero: {
-      headline: "科学家带出来的孩子，逻辑才是一切。",
+      headline: "从'要我学'到'我要学'。",
       subheadline:
-        '从协和医科大学博士到您孩子的私房导师。用科学家的严谨逻辑，对中小学课程进行"降维打击"。',
-      cta: "预约学业诊断",
+        "我们不只是教授课程内容。我们通过5F全人智能循环，重建学生对学习的心理认知方式。",
+      cta: "申请诊断测试",
     },
 
     painPoints: {
@@ -300,26 +306,32 @@ export const translations = {
     },
 
     success: {
-      title: "真实评价",
-      subtitle: "来自家长和学生的真实反馈",
+      title: "卓越之墙",
+      subtitle: "听听家长们怎么说",
       testimonials: [
         {
-          tag: "8年级学生",
-          highlight: "讲课生动有趣",
+          tag: "家长",
+          highlight: "博士亲自教我的孩子",
           quote:
-            "曲博士会在科学课中给我们讲他自己作为科学家和医生的故事... 科学课原来这么有趣！",
+            "我看到一位清华/协和医学院的博士...在教我读初中的女儿。感觉很不真实。",
         },
         {
-          tag: "7年级学生家长",
-          highlight: "讲课逻辑思维清晰",
+          tag: "学生",
+          highlight: "科学课原来这么有趣！",
           quote:
-            "每次课她都真地听懂了，而且题目真得会做了！",
+            "曲博士会给我们讲他做科学家时的故事...科学课原来这么有趣！",
         },
         {
-          tag: "VCE学生家长",
-          highlight: "了解每个孩子的学习情况",
+          tag: "内向孩子家长",
+          highlight: "他现在能专注了",
           quote:
-            "他所说出来的情况和我在家里辅导的感受完全相同... 这样的老师，是孩子的'私房老师'。",
+            "我儿子以前不敢发言...现在他很专注，因为他知道曲博士会点他回答问题。",
+        },
+        {
+          tag: "家长",
+          highlight: "像私房厨师一样",
+          quote:
+            "他就像教育界的'私房厨师'。他确切地知道我孩子哪里有困难。",
         },
       ],
     },
