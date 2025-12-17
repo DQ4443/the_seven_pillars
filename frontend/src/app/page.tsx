@@ -8,7 +8,9 @@ import {
   PainPoints,
   FiveFLoop,
   VideoSection,
+  Credentials,
   Evidence,
+  Pricing,
   Demographics,
   Timetable,
   Location,
@@ -40,25 +42,31 @@ export default function Home() {
           {/* 5. Video - See the 5F in Action */}
           <VideoSection />
 
-          {/* 6. Evidence - Case Studies */}
+          {/* 6. Credentials - Dr. Ricky's Background */}
+          <Credentials />
+
+          {/* 7. Evidence - Case Studies */}
           <Evidence />
 
-          {/* 7. Demographics - The Cohort */}
+          {/* 8. Pricing - Courses & Pricing */}
+          <Pricing />
+
+          {/* 9. Demographics - The Cohort */}
           <Demographics />
 
-          {/* 8. Timetable - The Schedule */}
+          {/* 10. Timetable - The Schedule */}
           <Timetable />
 
-          {/* 9. Location - The Campus */}
+          {/* 11. Location - The Campus */}
           <Location />
 
-          {/* 10. FAQ - Handle Objections */}
+          {/* 12. FAQ - Handle Objections */}
           <FAQ />
 
-          {/* 11. Enrollment Process - The Funnel */}
+          {/* 13. Enrollment Process - The Funnel */}
           <Enrollment />
 
-          {/* 12. Contact - The Action */}
+          {/* 14. Contact - The Action */}
           <Contact />
         </main>
         <Footer />

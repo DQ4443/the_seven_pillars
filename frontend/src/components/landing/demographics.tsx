@@ -18,7 +18,13 @@ function DonutChart({
 }) {
   const shouldReduceMotion = useReducedMotion();
   const total = data.reduce((sum, item) => sum + item.value, 0);
-  let currentAngle = -90; // Start from top
+
+  // SVG circle properties
+  const radius = 40;
+  const circumference = 2 * Math.PI * radius;
+
+  // Calculate cumulative offset for each segment
+  let cumulativePercent = 0;
 
   return (
     <div className="flex flex-col items-center">
@@ -29,28 +35,30 @@ function DonutChart({
 
       {/* SVG Donut - smaller on mobile */}
       <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56">
-        <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+        <svg viewBox="0 0 100 100" className="w-full h-full">
           {data.map((item, index) => {
-            const percentage = (item.value / total) * 100;
-            const strokeDasharray = `${percentage} ${100 - percentage}`;
-            const strokeDashoffset = -currentAngle - 90;
-            currentAngle += percentage;
+            const percent = item.value / total;
+            const strokeDasharray = `${percent * circumference} ${circumference}`;
+            // Offset to start from top (-25%) and account for previous segments
+            const strokeDashoffset = circumference * (0.25 - cumulativePercent);
+
+            cumulativePercent += percent;
 
             return (
               <motion.circle
                 key={index}
                 cx="50"
                 cy="50"
-                r="40"
+                r={radius}
                 fill="none"
                 stroke={item.color}
                 strokeWidth="12"
                 strokeDasharray={strokeDasharray}
                 strokeDashoffset={strokeDashoffset}
-                pathLength="100"
-                initial={shouldReduceMotion ? {} : { pathLength: 0 }}
-                whileInView={{ pathLength: 100 }}
-                transition={{ duration: 1, delay: index * 0.2 }}
+                strokeLinecap="butt"
+                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
                 viewport={{ once: true }}
               />
             );

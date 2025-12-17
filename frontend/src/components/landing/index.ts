@@ -5,6 +5,8 @@ export { PainPoints } from "./pain-points";
 export { FiveFLoop } from "./five-f-loop";
 export { VideoSection } from "./video-section";
 export { Evidence } from "./evidence";
+export { Credentials } from "./credentials";
+export { Pricing } from "./pricing";
 export { Demographics } from "./demographics";
 export { Timetable } from "./timetable";
 export { Location } from "./location";
