@@ -3,128 +3,140 @@ export const translations = {
     nav: {
       about: "About",
       success: "Results",
-      timetable: "Classes",
-      events: "Events",
+      courses: "Courses",
+      admissions: "Admissions",
       faq: "FAQ",
-      location: "Location",
       contact: "Contact",
-      registerInterest: "Get in Touch",
+      bookDiagnostic: "Book Diagnostic",
     },
 
     hero: {
-      hook: '"With your background, isn\'t teaching high school maths a bit of a step down?"',
-      statement:
-        "Shaping how a young person thinks is more complex than developing a new drug. And far more rewarding.",
-      cta: "Get in Touch",
+      headline: "Scientist-Led Education. Logic is Everything.",
+      subheadline:
+        "From top-tier medical research to your child's classroom. I don't just teach the curriculum—I teach the scientific method of thinking that crushes the VCE.",
+      cta: "Book Diagnostic",
+    },
+
+    painPoints: {
+      title: "Common Challenges We Solve",
+      items: [
+        {
+          label: "Shy in Class?",
+          reveal: "I cold-call with kindness. No one hides in a class of 10.",
+        },
+        {
+          label: "Hates Math?",
+          reveal: "They don't hate math; they hate being confused. Logic fixes that.",
+        },
+        {
+          label: "Scores Plateaued?",
+          reveal: "We stop memorizing and start understanding first principles.",
+        },
+      ],
     },
 
     about: {
-      title: "About Dr. Ricky",
-      subtitle: "Scientist turned educator",
-      story:
-        "My background spans clinical medicine (undergraduate and Masters), bioengineering at Kyoto University, pharmaceutical R&D during my PhD, and Chief Scientist at a drug development company in Australia. I'm also AMC certified. I've worked and studied across China, Japan, the USA, and Australia. In 2014, I made a life change—I began tutoring upper primary and high school students in maths and science.",
-      approach:
-        "Over the past decade, I've walked alongside countless families through their children's teenage years. Watching students go from struggling to genuinely enjoying maths and science—and more importantly, growing into young people who take responsibility for themselves—is deeply rewarding.",
-      credentials: [
-        "PhD: Tsinghua University & Peking Union Medical College",
-        "Research: Kyoto University, Henry Ford Hospital (USA)",
-        "Former Chief Scientist, pharmaceutical R&D",
-        "Australian Medical Council certified",
-        "10+ years teaching in Melbourne",
-        "Taught nearly 1,000 students",
-      ],
-      philosophy: {
-        title: "Teaching Philosophy",
-        points: [
-          "Teaching with an educator's mindset: through focused listening, completing homework, and correcting mistakes, I shape responsible young adults",
-          "A diagnostic approach: assess foundations first, guide step by step, explain with real examples, then challenge with tricky problems",
-          "Multiple problem-solving methods: formulas, clever shortcuts, Eastern and Western approaches—students learn to choose what works best",
-          "Patience and care: I understand teenagers' inner conflicts—wanting independence while still needing support",
-          "Interactive classrooms: every student gets challenged and supported, so I can quickly identify their strengths and weaknesses",
-          "Crystal-clear explanations: parents and students say, 'We've tried many tutoring centres—here, I actually understand every time.'",
+      title: "The Scientist in the Classroom",
+      subtitle: '"Over-Qualified"? No—this is dimensionality reduction.',
+      narrative:
+        "Why does a medical researcher teach Year 8 Science? Because shaping a young mind is more complex—and more rewarding—than developing a new drug.",
+      credentials: {
+        title: "Credentials",
+        items: [
+          {
+            title: "PhD, Peking Union Medical College & Tsinghua University",
+            subtitle: "Medical Research",
+          },
+          {
+            title: "Post-Doctoral Fellow, Henry Ford Hospital, USA",
+            subtitle: "Advanced Research",
+          },
+          {
+            title: "Research Scientist, Kyoto University, Japan",
+            subtitle: "International Experience",
+          },
+          {
+            title: "The Dad Era: Father of Twins",
+            subtitle: "Berkeley & Silicon Valley",
+          },
         ],
       },
-      watchVideo: "Hear from Dr. Ricky",
+      twins: {
+        title: "The Proof of Concept",
+        description:
+          "I didn't just study education theory. I applied my scientific background to my own children. They went to Berkeley and Silicon Valley. Now, I use that exact same rigorous methodology to teach your child.",
+      },
     },
 
     success: {
-      title: "Results",
-      subtitle: "The proof is in the outcomes",
-      twinsStory: {
-        title: "Melbourne to Silicon Valley",
-        description: "Dr. Ricky's twin sons:",
-        timeline: [
-          { year: "Primary", achievement: "Dux of Oakleigh South Primary" },
-          { year: "Secondary", achievement: "Scotch College scholarships" },
-          { year: "VCE", achievement: "Near-perfect ATAR" },
-          { year: "University", achievement: "UC Berkeley CS (completed in 3 years)" },
-          { year: "Now", achievement: "Software Engineers, Silicon Valley" },
-        ],
-      },
-      testimonialTitle: "From Parents",
+      title: "The Wall of Truth",
+      subtitle: "Real feedback from real families",
       testimonials: [
         {
+          tag: "Year 8 Student",
+          highlight: "Science is finally fun",
           quote:
-            "We tried many tutors. Here, my son actually understands—every time.",
-          author: "Year 9 parent",
+            "Dr. Ricky shares stories from his time as a scientist... suddenly, that huge block of text just makes sense.",
         },
         {
+          tag: "Parent of Year 7",
+          highlight: "She actually understands it now",
           quote:
-            "She used to dread maths. Now she does it first when she gets home.",
-          author: "Year 7 parent",
+            "My daughter loves Dr. Ricky the most because she told me, 'Dad, I actually understood the lesson!'",
         },
         {
-          quote: "The older one recommended it to the younger. That says it all.",
-          author: "Parent of two",
+          tag: "VCE Parent",
+          highlight: "He truly knows my child",
+          quote:
+            "When he talks about my child's weaknesses, it matches exactly what I see at home. He is a 'Private Mentor'.",
         },
       ],
     },
 
-    timetable: {
-      title: "Classes",
-      subtitle: "Term 1, 2026",
-      termDates: "Jan 27 – Apr 2 (10 weeks)",
-      classSize: "6-10 students per class",
-      pricing: "$50 / 1.5 hours",
-      days: {
-        MON: "Mon",
-        TUE: "Tue",
-        WED: "Wed",
-        THU: "Thu",
-        FRI: "Fri",
-      },
-      tbd: "TBD",
-      subjects: {
-        maths: "Maths",
-        science: "Science",
-        chemistry: "Chemistry",
-        methods: "Methods",
-      },
-      note: "In-person & online available",
-    },
-
-    events: {
-      title: "Upcoming",
-      subtitle: "What's on",
-      registerButton: "Register",
-      learnMore: "Learn More",
-      placeholder: [
+    courses: {
+      title: "Courses & Pricing",
+      subtitle: "The Product",
+      features: [
         {
-          title: "Trial Class",
-          date: "By Appointment",
-          description: "See if it's a good fit. No obligation.",
+          title: "Max 10 Students",
+          description: "Every child gets challenged.",
         },
         {
-          title: "Parent Info Session",
-          date: "Coming Soon",
-          description: "Learn about our approach and ask questions.",
+          title: "Hybrid Learning",
+          description: "In-person (Scoresby) or Live Zoom.",
         },
         {
-          title: "Term 1 Enrolment",
-          date: "Open Now",
-          description: "Spots are limited. Secure your place.",
+          title: "Video Archive",
+          description: "Never miss a lesson due to sickness or camp.",
+        },
+        {
+          title: "Free Elite Materials",
+          description: "Cambridge ICE-EM + Custom Problem Sets.",
         },
       ],
+      courseList: [
+        {
+          title: "Year 6",
+          description: "Primary to Secondary Prep",
+          highlight: false,
+        },
+        {
+          title: "Year 7-9",
+          description: "Comprehensive Science & Math",
+          highlight: false,
+        },
+        {
+          title: "Pre-VCE Strategy (Year 9-10)",
+          description: "Finish Unit 1/2 Chemistry or Methods in Year 10. Strategic advantage for ATAR.",
+          highlight: true,
+        },
+      ],
+      pricing: {
+        price: "$50 AUD",
+        period: "/ Session",
+        note: "Returning Family Rate",
+        subtext: "Billed per Term. Material Fees: $0.",
+      },
     },
 
     faq: {
@@ -199,153 +211,163 @@ export const translations = {
       ],
     },
 
-    location: {
-      title: "Location",
-      subtitle: "Scoresby, Melbourne",
-      address: "15 Rivette Street, Scoresby VIC 3179",
-      openInMaps: "Open in Maps",
-      servingAreas: "Serving Melbourne's eastern suburbs",
-    },
-
-    contact: {
-      title: "Contact",
-      subtitle: "Get in touch",
-      phone: "Phone",
-      email: "Email",
-      wechat: "WeChat",
-      scanQR: "Scan to connect",
-      adminNote: "Mrs. Qu handles admin. She'll be in touch when a spot opens.",
-      limitedSpots: "Small classes mean limited spots. Register your interest early.",
+    admissions: {
+      title: "Admissions",
+      subtitle: "Results start with a diagnosis.",
+      steps: [
+        { number: "1", title: "Add WeChat" },
+        { number: "2", title: "Download Entrance Test" },
+        { number: "3", title: "Receive Diagnosis & Placement" },
+      ],
+      downloadButton: "Download Entrance Test PDF",
+      downloadNote: "This test is harder than school. It is designed to find the gaps in logic.",
     },
 
     footer: {
+      address: "15 Rivette St, Scoresby, VIC, 3179",
+      serviceArea: "Glen Waverley, Wheelers Hill, Wantirna, Caulfield",
       copyright: "© 2025 Dr Ricky's Education",
-      tagline: "Maths & Science tutoring, Melbourne",
     },
   },
 
   zh: {
     nav: {
       about: "关于曲博士",
-      success: "成功案例",
-      timetable: "课程表",
-      events: "活动",
+      success: "家长评价",
+      courses: "课程价格",
+      admissions: "入学流程",
       faq: "常见问题",
-      location: "地址",
       contact: "联系我们",
-      registerInterest: "报名咨询",
+      bookDiagnostic: "预约诊断",
     },
 
     hero: {
-      hook: "「曲博士，您有北京协和医学院和清华大学的博士学位，在美国亨利福特医院和日本京都大学做过研究，还是新药研发的首席科学家……教中学数学，是不是太屈才了？」",
-      statement: "塑造一个年轻的心灵，比研发一种新药更复杂，也更有意义。",
-      cta: "报名咨询",
+      headline: "科学家带出来的孩子，逻辑才是一切。",
+      subheadline:
+        '从协和医科大学博士到您孩子的私房导师。用科学家的严谨逻辑，对中小学课程进行"降维打击"。',
+      cta: "预约学业诊断",
+    },
+
+    painPoints: {
+      title: "我们帮您解决这些难题",
+      items: [
+        {
+          label: "孩子不敢提问？",
+          reveal: "曲博士会在每节课点名挑战每个学生。在10人小班里，没有人可以躲藏。",
+        },
+        {
+          label: "讨厌数学？",
+          reveal: "他们不是讨厌数学，他们是讨厌困惑。逻辑可以解决这个问题。",
+        },
+        {
+          label: "成绩瓶颈期？",
+          reveal: "我们停止死记硬背，开始理解第一性原理。",
+        },
+      ],
     },
 
     about: {
-      title: "曲博士是谁？",
-      subtitle: "一位选择培育英才的科学家",
-      story:
-        "我的背景非常宽泛：大学本科和硕士研究生阶段学习临床医学；在日本京都大学学习生物工程技术；博士期间参与新药研发课题，来澳洲后在一家新药研发公司担任首席科学家。我还通过了澳洲医生资格考试。我曾先后在中国、日本、美国和澳大利亚工作和学习。2014年，因为家庭的考虑，我开始了小学高年级到中学10年级的数学和科学课外辅导教学。",
-      approach: "十余年来，我陪伴了很多家长和孩子们一起走过青春期的阶段，看着孩子们在数学和科学方面从挣扎变为开心、喜欢，特别是看着他们透过学习功课、完成作业、上课认真听讲，变成一个个愿意为自己负责的「年轻人」，真的很为每个家庭和孩子们高兴！",
-      credentials: [
-        "北京协和医学院与清华大学联合博士学位",
-        "日本京都大学、美国亨利福特医院科研经历",
-        "曾任新药研发公司首席科学家",
-        "通过澳大利亚医师协会（AMC）资格考试",
-        "墨尔本本地10余年教学经验",
-        "教过近千名学生",
-      ],
-      philosophy: {
-        title: "教学理念",
-        points: [
-          "用「教育家」的理念做「补课老师」的工作：透过认真听讲、完成作业、改正错误，塑造有担当的年轻人",
-          "用「医生诊疗」的态度教学：先测试基础，循序渐进引导，用实例讲解，再挑战易错题",
-          "展示多种解题思路（套公式、巧妙方法、中西方法），让孩子学会灵活选择最有效的方法",
-          "用爱心和耐心带领孩子们：理解这个年龄段孩子的内心矛盾——既希望独立，又渴望依靠",
-          "互动式课堂：每个孩子都有机会在挑战中被帮助，及时发现每个孩子的强弱特点",
-          "清晰的逻辑思维：家长和孩子们的评价——「去过许多补课中心，曲博士这儿我每次都真的听懂了！」",
+      title: '"Over-Qualified"？不，这是对教育的降维打击',
+      subtitle: "科学家走进课堂",
+      narrative:
+        "为什么一位医学科学家要教8年级的科学课？因为塑造一个年轻的心灵，比研发一种新药更复杂，也更有意义。",
+      credentials: {
+        title: "资历背景",
+        items: [
+          {
+            title: "中国协和医科大学 & 清华大学医学博士",
+            subtitle: "医学研究",
+          },
+          {
+            title: "美国 Henry Ford Hospital 博士后",
+            subtitle: "深造研究",
+          },
+          {
+            title: "日本京都大学医学部 研究员",
+            subtitle: "国际经验",
+          },
+          {
+            title: "两个孩子的父亲",
+            subtitle: "Berkeley & 硅谷",
+          },
         ],
       },
-      watchVideo: "观看曲博士讲解教学方法",
+      twins: {
+        title: "成功案例 / 教育蓝图",
+        description:
+          "我不只是研究教育理论。我把我的科学背景应用到了我自己的孩子身上。他们去了伯克利和硅谷。现在，我用同样严谨的方法论来教您的孩子。",
+      },
     },
 
     success: {
-      title: "成功案例",
-      subtitle: "科学方法，用于教育",
-      twinsStory: {
-        title: "从墨尔本到硅谷",
-        description: "曲博士的双胞胎儿子，是他教育方法的最好证明：",
-        timeline: [
-          { year: "小学", achievement: "Oakleigh South Primary School 毕业典礼致辞代表（Dux）" },
-          { year: "中学", achievement: "获得 Scotch College 高额奖学金" },
-          { year: "VCE", achievement: "接近满分成绩，被墨尔本大学录取" },
-          { year: "大学", achievement: "三年完成 UC Berkeley 计算机科学学位" },
-          { year: "职业", achievement: "现于硅谷担任软件工程师" },
-        ],
-      },
-      testimonialTitle: "家长反馈",
+      title: "真实评价",
+      subtitle: "来自家长和学生的真实反馈",
       testimonials: [
         {
-          quote: "我们试过很多补习中心。在曲博士这里，孩子每次都能真正听懂。",
-          author: "9年级学生家长",
+          tag: "8年级学生",
+          highlight: "讲课生动有趣",
+          quote:
+            "曲博士会在科学课中给我们讲他自己作为科学家和医生的故事... 科学课原来这么有趣！",
         },
         {
-          quote: "女儿以前最怕数学，现在数学变成了她最喜欢的科目，回家总是先做数学作业。",
-          author: "7年级学生家长",
+          tag: "7年级学生家长",
+          highlight: "讲课逻辑思维清晰",
+          quote:
+            "每次课她都真地听懂了，而且题目真得会做了！",
         },
         {
-          quote: "哥哥姐姐在曲博士这里上课，主动推荐给了弟弟妹妹。这就是最好的评价。",
-          author: "两个孩子的家长",
+          tag: "VCE学生家长",
+          highlight: "了解每个孩子的学习情况",
+          quote:
+            "他所说出来的情况和我在家里辅导的感受完全相同... 这样的老师，是孩子的'私房老师'。",
         },
       ],
     },
 
-    timetable: {
-      title: "课程表",
-      subtitle: "2026年第一学期",
-      termDates: "1月27日 – 4月2日（共10周）",
-      classSize: "小班教学：每班最多6-10人",
-      pricing: "$50 / 1.5小时",
-      days: {
-        MON: "星期一",
-        TUE: "星期二",
-        WED: "星期三",
-        THU: "星期四",
-        FRI: "星期五",
-      },
-      tbd: "待定",
-      subjects: {
-        maths: "数学",
-        science: "科学",
-        chemistry: "化学",
-        methods: "中数",
-      },
-      note: "提供线下实体课和线上网课",
-    },
-
-    events: {
-      title: "近期活动",
-      subtitle: "欢迎参加以下活动",
-      registerButton: "报名",
-      learnMore: "了解更多",
-      placeholder: [
+    courses: {
+      title: "课程与价格",
+      subtitle: "我们的产品",
+      features: [
         {
-          title: "免费试听课",
-          date: "预约制",
-          description: "让孩子亲身体验曲博士的教学方法。预约一节试听课。",
+          title: "小班制",
+          description: "每个孩子都会被挑战到。",
         },
         {
-          title: "家长说明会",
-          date: "即将举办",
-          description: "了解我们的课程设置、教学方法，以及如何帮助孩子取得优异成绩。",
+          title: "双模式教学",
+          description: "实体课（Scoresby）或 Zoom 网课。",
         },
         {
-          title: "2026第一学期招生",
-          date: "现已开放",
-          description: "为您的孩子预留2026年第一学期的名额。名额有限，先到先得。",
+          title: "课程录像",
+          description: "生病或学校活动不会错过课程。",
+        },
+        {
+          title: "独家教材免费",
+          description: "Cambridge ICE-EM + 名校习题集。",
         },
       ],
+      courseList: [
+        {
+          title: "6年级",
+          description: "小升初准备课程",
+          highlight: false,
+        },
+        {
+          title: "7-9年级",
+          description: "数学与科学综合课程",
+          highlight: false,
+        },
+        {
+          title: "Pre-VCE 抢跑计划（9-10年级）",
+          description: "在10年级完成 Unit 1/2 化学或中数。ATAR 战略优势。",
+          highlight: true,
+        },
+      ],
+      pricing: {
+        price: "$50 澳币",
+        period: "/ 每节课",
+        note: "老学员优惠价",
+        subtext: "按学期付款。教材费：$0。",
+      },
     },
 
     faq: {
@@ -407,28 +429,22 @@ export const translations = {
       ],
     },
 
-    location: {
-      title: "上课地址",
-      subtitle: "位于Scoresby，交通便利",
-      address: "15 Rivette Street, Scoresby, VIC 3179",
-      openInMaps: "在Google地图中打开",
-      servingAreas: "服务墨尔本东区各区家庭",
-    },
-
-    contact: {
-      title: "联系我们",
-      subtitle: "欢迎咨询报名",
-      phone: "电话",
-      email: "邮箱",
-      wechat: "微信",
-      scanQR: "扫码添加微信",
-      adminNote: "曲师母（行政）会在有名额时联系您安排入学测试。",
-      limitedSpots: "由于小班教学（6-10人），名额有限。请尽早登记报名意向。",
+    admissions: {
+      title: "入学流程",
+      subtitle: '拒绝盲目补习，从"诊断"开始。',
+      steps: [
+        { number: "1", title: "添加微信" },
+        { number: "2", title: "下载入学测试" },
+        { number: "3", title: "获得诊断报告" },
+      ],
+      downloadButton: "下载入学测试题",
+      downloadNote: "测试难度高于日校，旨在发现逻辑漏洞。",
     },
 
     footer: {
-      copyright: "© 2025 曲博士教育 版权所有",
-      tagline: "以科学思维，启迪年轻心灵",
+      address: "15 Rivette St, Scoresby, VIC, 3179",
+      serviceArea: "Glen Waverley, Wheelers Hill, Wantirna, Caulfield",
+      copyright: "© 2025 曲博士教育",
     },
   },
 } as const;

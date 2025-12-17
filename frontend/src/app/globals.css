@@ -4,16 +4,18 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ==========================================
-   BOTANICAL / ORGANIC SERIF DESIGN SYSTEM
+   PRESTIGE DESIGN SYSTEM
    Dr Ricky's Education - 曲博士教育
+   "Private Medical Practice meets Ivy League"
    ========================================== */
 
 @theme inline {
-  /* Typography - Botanical System */
-  --font-sans: var(--font-source-sans), system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  /* Typography - Prestige System */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-merriweather), Georgia, serif;
+  --font-serif-cn: var(--font-noto-serif-sc), "Songti SC", serif;
 
-  /* Botanical Color Palette */
+  /* Prestige Color Palette */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -32,14 +34,16 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-destructive: var(--destructive);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
 
-  /* Botanical Radii - Highly Rounded */
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --radius-2xl: 40px;
-  --radius-3xl: 48px;
+  /* Refined Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
   --radius-full: 9999px;
 
   /* Chart colors (keeping for compatibility) */
@@ -61,91 +65,97 @@
 }
 
 :root {
-  --radius: 24px;
+  --radius: 16px;
 
   /* ========================================
-     BOTANICAL COLOR PALETTE - Light Mode
-     Earthy, muted, nature-inspired
+     PRESTIGE COLOR PALETTE - Light Mode
+     "Private Medical Practice meets Ivy League"
      ======================================== */
 
   /* Backgrounds */
-  --background: #F9F8F4;           /* Warm Alabaster / Rice Paper */
+  --background: #F9F9F7;           /* Warm Alabaster - The canvas */
   --card: #FFFFFF;                 /* Pure White for cards */
   --popover: #FFFFFF;
-  --muted: #F2F0EB;                /* Soft Clay / Mushroom */
+  --muted: #F3F3F1;                /* Subtle warm gray */
 
-  /* Foregrounds */
-  --foreground: #2D3A31;           /* Deep Forest Green - primary text */
-  --card-foreground: #2D3A31;
-  --popover-foreground: #2D3A31;
-  --muted-foreground: #5C6B5E;     /* Muted Forest */
+  /* Foregrounds - Never pure black */
+  --foreground: #333333;           /* Charcoal - primary text */
+  --card-foreground: #333333;
+  --popover-foreground: #333333;
+  --muted-foreground: #666666;     /* Muted charcoal */
 
-  /* Primary - Sage Green */
-  --primary: #8C9A84;              /* Sage Green */
+  /* Primary - Oxford Blue (Authority) */
+  --primary: #0E2A47;              /* Oxford Blue */
   --primary-foreground: #FFFFFF;
 
-  /* Secondary - Soft Clay */
-  --secondary: #DCCFC2;            /* Soft Clay / Mushroom */
-  --secondary-foreground: #2D3A31;
+  /* Secondary - Muted Gold (Prestige) */
+  --secondary: #C5A059;            /* Muted Gold */
+  --secondary-foreground: #0E2A47;
 
-  /* Accent - Terracotta (for CTAs and highlights) */
-  --accent: #C27B66;               /* Terracotta */
-  --accent-foreground: #FFFFFF;
+  /* Accent - Gold for highlights and special CTAs */
+  --accent: #C5A059;               /* Muted Gold */
+  --accent-foreground: #0E2A47;
+
+  /* Gold color for explicit use */
+  --gold: #C5A059;
+  --gold-foreground: #0E2A47;
 
   /* Borders & Inputs */
-  --border: #E6E2DA;               /* Stone */
-  --input: #E6E2DA;
-  --ring: #8C9A84;                 /* Sage Green for focus */
+  --border: #E5E5E3;               /* Warm gray border */
+  --input: #E5E5E3;
+  --ring: #0E2A47;                 /* Oxford Blue for focus */
 
   /* Destructive */
-  --destructive: #B85C4D;          /* Muted terracotta-red */
+  --destructive: #B85C4D;          /* Muted red */
 
-  /* Chart colors - Nature inspired */
-  --chart-1: #8C9A84;              /* Sage */
-  --chart-2: #C27B66;              /* Terracotta */
-  --chart-3: #DCCFC2;              /* Clay */
-  --chart-4: #A4B89A;              /* Light sage */
-  --chart-5: #2D3A31;              /* Forest */
+  /* Chart colors */
+  --chart-1: #0E2A47;              /* Oxford Blue */
+  --chart-2: #C5A059;              /* Muted Gold */
+  --chart-3: #666666;              /* Charcoal */
+  --chart-4: #8B9DC3;              /* Light blue-gray */
+  --chart-5: #333333;              /* Dark charcoal */
 
   /* Sidebar (portal) */
-  --sidebar: #F9F8F4;
-  --sidebar-foreground: #2D3A31;
-  --sidebar-primary: #8C9A84;
+  --sidebar: #F9F9F7;
+  --sidebar-foreground: #333333;
+  --sidebar-primary: #0E2A47;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F2F0EB;
-  --sidebar-accent-foreground: #2D3A31;
-  --sidebar-border: #E6E2DA;
-  --sidebar-ring: #8C9A84;
+  --sidebar-accent: #F3F3F1;
+  --sidebar-accent-foreground: #333333;
+  --sidebar-border: #E5E5E3;
+  --sidebar-ring: #0E2A47;
 }
 
-/* Dark mode - Earthy dark palette */
+/* Dark mode - Elegant dark palette */
 .dark {
-  --background: #1A1F1B;           /* Deep forest night */
-  --foreground: #E8E6E1;           /* Warm off-white */
-  --card: #242A25;                 /* Elevated dark */
-  --card-foreground: #E8E6E1;
-  --popover: #242A25;
-  --popover-foreground: #E8E6E1;
-  --muted: #2D3A31;
-  --muted-foreground: #9CA89E;
-  --primary: #A4B89A;              /* Lighter sage for dark mode */
-  --primary-foreground: #1A1F1B;
-  --secondary: #3D4A3F;
-  --secondary-foreground: #E8E6E1;
-  --accent: #D4917D;               /* Lighter terracotta */
-  --accent-foreground: #1A1F1B;
-  --border: #3D4A3F;
-  --input: #3D4A3F;
-  --ring: #A4B89A;
+  --background: #1A1A1A;
+  --foreground: #F0F0EE;
+  --card: #242424;
+  --card-foreground: #F0F0EE;
+  --popover: #242424;
+  --popover-foreground: #F0F0EE;
+  --muted: #2D2D2D;
+  --muted-foreground: #A0A0A0;
+  --primary: #4A7BB7;              /* Lighter Oxford Blue for dark mode */
+  --primary-foreground: #FFFFFF;
+  --secondary: #D4B86A;            /* Lighter Gold */
+  --secondary-foreground: #1A1A1A;
+  --accent: #D4B86A;
+  --accent-foreground: #1A1A1A;
+  --gold: #D4B86A;
+  --gold-foreground: #1A1A1A;
+  --border: #3D3D3D;
+  --input: #3D3D3D;
+  --ring: #4A7BB7;
   --destructive: #D4917D;
-  --sidebar: #1A1F1B;
-  --sidebar-foreground: #E8E6E1;
-  --sidebar-primary: #A4B89A;
-  --sidebar-primary-foreground: #1A1F1B;
-  --sidebar-accent: #2D3A31;
-  --sidebar-accent-foreground: #E8E6E1;
-  --sidebar-border: #3D4A3F;
-  --sidebar-ring: #A4B89A;
+  --sidebar: #1A1A1A;
+  --sidebar-foreground: #F0F0EE;
+  --sidebar-primary: #4A7BB7;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #2D2D2D;
+  --sidebar-accent-foreground: #F0F0EE;
+  --sidebar-border: #3D3D3D;
+  --sidebar-ring: #4A7BB7;
 }
 
 @layer base {
@@ -155,6 +165,13 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    line-height: 1.6;
+  }
+
+  /* Chinese text line height */
+  [lang="zh"] body,
+  .lang-zh {
+    line-height: 1.8;
   }
 
   /* Smooth scrolling */
@@ -162,13 +179,21 @@
     scroll-behavior: smooth;
   }
 
-  /* Typography defaults */
+  /* Typography defaults - Merriweather for headings */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
-    @apply font-semibold tracking-tight;
+    @apply font-bold tracking-tight text-foreground;
   }
 
-  /* Focus states - Sage green ring */
+  /* Chinese headings use Noto Serif SC */
+  [lang="zh"] h1, [lang="zh"] h2, [lang="zh"] h3,
+  [lang="zh"] h4, [lang="zh"] h5, [lang="zh"] h6,
+  .lang-zh h1, .lang-zh h2, .lang-zh h3,
+  .lang-zh h4, .lang-zh h5, .lang-zh h6 {
+    font-family: var(--font-serif-cn), var(--font-serif);
+  }
+
+  /* Focus states - Oxford Blue ring */
   *:focus-visible {
     @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background;
   }
@@ -187,53 +212,122 @@
 }
 
 @layer components {
-  /* Botanical Button - Primary (Pill shaped) */
-  .btn-botanical {
+  /* ========================================
+     PRESTIGE BUTTON SYSTEM
+     ======================================== */
+
+  /* Primary Button - Oxford Blue */
+  .btn-primary {
     @apply inline-flex items-center justify-center gap-2;
-    @apply rounded-full px-8 py-3;
-    @apply bg-foreground text-background;
-    @apply text-sm font-medium uppercase tracking-widest;
+    @apply rounded-lg px-6 py-3;
+    @apply bg-primary text-primary-foreground;
+    @apply text-sm font-semibold;
     @apply transition-all duration-300 ease-out;
-    @apply hover:bg-foreground/90 hover:shadow-lg;
+    @apply hover:bg-primary/90 hover:shadow-lg;
     @apply active:scale-[0.98];
   }
 
-  /* Botanical Button - Secondary (Outlined) */
-  .btn-botanical-outline {
+  /* Gold Button - For CTAs */
+  .btn-gold {
     @apply inline-flex items-center justify-center gap-2;
-    @apply rounded-full px-8 py-3;
-    @apply bg-transparent border border-primary text-primary;
-    @apply text-sm font-medium uppercase tracking-widest;
+    @apply rounded-lg px-6 py-3;
+    @apply bg-accent text-accent-foreground;
+    @apply text-sm font-semibold;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-accent/90 hover:shadow-lg;
+    @apply active:scale-[0.98];
+  }
+
+  /* Outline Button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply rounded-lg px-6 py-3;
+    @apply bg-transparent border-2 border-primary text-primary;
+    @apply text-sm font-semibold;
     @apply transition-all duration-300 ease-out;
     @apply hover:bg-primary hover:text-primary-foreground;
     @apply active:scale-[0.98];
   }
 
-  /* Botanical Card */
+  /* Legacy botanical button (keeping for compatibility) */
+  .btn-botanical {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply rounded-lg px-6 py-3;
+    @apply bg-primary text-primary-foreground;
+    @apply text-sm font-semibold;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-primary/90 hover:shadow-lg;
+    @apply active:scale-[0.98];
+  }
+
+  .btn-botanical-outline {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply rounded-lg px-6 py-3;
+    @apply bg-transparent border-2 border-primary text-primary;
+    @apply text-sm font-semibold;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply active:scale-[0.98];
+  }
+
+  /* ========================================
+     PRESTIGE CARD SYSTEM
+     ======================================== */
+
+  /* Standard Card */
+  .card-prestige {
+    @apply bg-card rounded-xl;
+    @apply transition-all duration-300 ease-out;
+    @apply border border-border;
+    box-shadow: 0 4px 6px -1px rgba(14, 42, 71, 0.05);
+  }
+
+  .card-prestige:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 20px 40px -10px rgba(14, 42, 71, 0.1);
+  }
+
+  /* Gold Border Card - For featured content */
+  .card-gold-border {
+    @apply bg-card rounded-xl;
+    @apply border-2 border-accent;
+    @apply transition-all duration-300 ease-out;
+    box-shadow: 0 4px 6px -1px rgba(197, 160, 89, 0.1);
+  }
+
+  .card-gold-border:hover {
+    box-shadow: 0 20px 40px -10px rgba(197, 160, 89, 0.2);
+  }
+
+  /* Legacy card (keeping for compatibility) */
   .card-botanical {
-    @apply bg-card rounded-3xl;
-    @apply transition-all duration-500 ease-out;
-    @apply hover:-translate-y-1;
-    box-shadow: 0 4px 6px -1px rgba(45, 58, 49, 0.05);
+    @apply bg-card rounded-xl;
+    @apply transition-all duration-300 ease-out;
+    @apply border border-border;
+    box-shadow: 0 4px 6px -1px rgba(14, 42, 71, 0.05);
   }
 
   .card-botanical:hover {
-    box-shadow: 0 20px 40px -10px rgba(45, 58, 49, 0.1);
+    @apply -translate-y-1;
+    box-shadow: 0 20px 40px -10px rgba(14, 42, 71, 0.1);
   }
 
-  /* Arch Image Container */
-  .arch-image {
-    @apply overflow-hidden;
-    border-radius: 200px 200px 24px 24px;
-  }
+  /* ========================================
+     SECTION SYSTEM
+     ======================================== */
 
   /* Section spacing */
+  .section-prestige {
+    @apply py-16 md:py-24 lg:py-32;
+    @apply relative;
+  }
+
   .section-botanical {
     @apply py-16 md:py-24 lg:py-32;
     @apply relative;
   }
 
-  /* Section transition gradients - soften boundaries between sections */
+  /* Section transition gradients */
   .section-fade-top {
     @apply absolute top-0 left-0 right-0 h-24 md:h-32 pointer-events-none;
     background: linear-gradient(to bottom, var(--background), transparent);
@@ -244,31 +338,61 @@
     background: linear-gradient(to top, var(--background), transparent);
   }
 
-  .section-fade-top-muted {
-    @apply absolute top-0 left-0 right-0 h-24 md:h-32 pointer-events-none;
-    background: linear-gradient(to bottom, hsl(var(--muted) / 0.3), transparent);
+  /* ========================================
+     TYPOGRAPHY SYSTEM
+     ======================================== */
+
+  /* Prestige Headings */
+  .heading-prestige {
+    font-family: var(--font-serif);
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight;
   }
 
-  .section-fade-bottom-muted {
-    @apply absolute bottom-0 left-0 right-0 h-24 md:h-32 pointer-events-none;
-    background: linear-gradient(to top, hsl(var(--muted) / 0.3), transparent);
+  .heading-prestige-sm {
+    font-family: var(--font-serif);
+    @apply text-2xl md:text-3xl font-bold text-foreground;
   }
 
-  /* Heading styles */
+  /* Legacy heading (keeping for compatibility) */
   .heading-botanical {
     font-family: var(--font-serif);
-    @apply text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight;
   }
 
   .heading-botanical-sm {
     font-family: var(--font-serif);
-    @apply text-2xl md:text-3xl font-semibold text-foreground;
+    @apply text-2xl md:text-3xl font-bold text-foreground;
   }
 
-  /* Italic emphasis for headlines */
-  .italic-emphasis {
-    font-family: var(--font-serif);
-    @apply italic;
+  /* Gold text highlight */
+  .text-gold-highlight {
+    @apply text-accent font-bold;
+  }
+
+  /* ========================================
+     MOBILE STICKY BAR
+     ======================================== */
+
+  .sticky-conversion-bar {
+    @apply fixed bottom-0 left-0 right-0 z-999;
+    @apply flex md:hidden;
+    @apply bg-background border-t border-border;
+    @apply shadow-[0_-4px_20px_rgba(0,0,0,0.1)];
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .sticky-conversion-bar .btn-wechat {
+    @apply flex-[0.4] flex items-center justify-center gap-2;
+    @apply py-4 bg-primary text-primary-foreground;
+    @apply text-sm font-semibold;
+    @apply transition-colors duration-200;
+  }
+
+  .sticky-conversion-bar .btn-cta {
+    @apply flex-[0.6] flex items-center justify-center gap-2;
+    @apply py-4 bg-accent text-accent-foreground;
+    @apply text-sm font-semibold;
+    @apply transition-colors duration-200;
   }
 }
 
@@ -278,25 +402,59 @@
     font-family: var(--font-serif);
   }
 
+  .font-serif-cn {
+    font-family: var(--font-serif-cn);
+  }
+
   .font-sans {
     font-family: var(--font-sans);
   }
 
-  /* Botanical shadows */
+  /* Prestige shadows */
+  .shadow-prestige {
+    box-shadow: 0 4px 6px -1px rgba(14, 42, 71, 0.05);
+  }
+
+  .shadow-prestige-md {
+    box-shadow: 0 10px 15px -3px rgba(14, 42, 71, 0.08);
+  }
+
+  .shadow-prestige-lg {
+    box-shadow: 0 20px 40px -10px rgba(14, 42, 71, 0.1);
+  }
+
+  .shadow-prestige-xl {
+    box-shadow: 0 25px 50px -12px rgba(14, 42, 71, 0.15);
+  }
+
+  /* Legacy shadow utilities (keeping for compatibility) */
   .shadow-botanical {
-    box-shadow: 0 4px 6px -1px rgba(45, 58, 49, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(14, 42, 71, 0.05);
   }
 
   .shadow-botanical-md {
-    box-shadow: 0 10px 15px -3px rgba(45, 58, 49, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(14, 42, 71, 0.08);
   }
 
   .shadow-botanical-lg {
-    box-shadow: 0 20px 40px -10px rgba(45, 58, 49, 0.1);
+    box-shadow: 0 20px 40px -10px rgba(14, 42, 71, 0.1);
   }
 
   .shadow-botanical-xl {
-    box-shadow: 0 25px 50px -12px rgba(45, 58, 49, 0.15);
+    box-shadow: 0 25px 50px -12px rgba(14, 42, 71, 0.15);
+  }
+
+  /* Gold accent utilities */
+  .border-gold {
+    border-color: var(--gold);
+  }
+
+  .bg-gold {
+    background-color: var(--gold);
+  }
+
+  .text-gold {
+    color: var(--gold);
   }
 
   /* Touch-friendly tap targets */

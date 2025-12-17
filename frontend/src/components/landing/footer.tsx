@@ -1,37 +1,48 @@
 "use client";
 
 import { useLanguage } from "@/lib/i18n/context";
-import { Leaf } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 export function Footer() {
   const { language, t } = useLanguage();
 
   return (
-    <footer className="py-12 md:py-16 border-t border-border bg-muted/30">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Logo and tagline */}
-          <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                <Leaf className="h-4 w-4 text-primary" strokeWidth={1.5} />
-              </div>
-              <span className="font-serif text-lg font-semibold text-foreground">
-                {language === "zh" ? "曲博士教育" : "Dr Ricky's Education"}
-              </span>
-            </div>
-            <p className="text-muted-foreground">{t.footer.tagline}</p>
+    <footer className="py-12 md:py-16 bg-primary text-primary-foreground">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="grid md:grid-cols-3 gap-8 mb-10">
+          {/* Logo */}
+          <div>
+            <span className="font-serif text-xl font-bold">
+              {language === "zh" ? "曲博士教育" : "Dr. Ricky's Education"}
+            </span>
           </div>
 
-          {/* Copyright */}
-          <p className="text-base text-muted-foreground">{t.footer.copyright}</p>
+          {/* Address */}
+          <div>
+            <div className="flex items-start gap-2 mb-2">
+              <MapPin className="h-5 w-5 shrink-0 mt-0.5" strokeWidth={1.5} />
+              <span className="text-primary-foreground/80">
+                {t.footer.address}
+              </span>
+            </div>
+          </div>
+
+          {/* Service Area */}
+          <div>
+            <p className="text-sm text-primary-foreground/60">
+              {language === "zh" ? "服务区域" : "Service Area"}
+            </p>
+            <p className="text-primary-foreground/80">
+              {t.footer.serviceArea}
+            </p>
+          </div>
         </div>
 
-        {/* Decorative element */}
-        <div className="flex items-center justify-center gap-3 mt-10 pt-8 border-t border-border">
-          <div className="h-px w-12 bg-border" />
-          <Leaf className="h-4 w-4 text-primary/40" strokeWidth={1.5} />
-          <div className="h-px w-12 bg-border" />
+        {/* Divider */}
+        <div className="border-t border-primary-foreground/20 pt-8">
+          <p className="text-center text-sm text-primary-foreground/60">
+            {t.footer.copyright}
+          </p>
         </div>
       </div>
     </footer>

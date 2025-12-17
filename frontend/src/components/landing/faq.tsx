@@ -7,73 +7,68 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { HelpCircle, MessageCircle } from "lucide-react";
-import {
-  SectionHeader,
-  SectionTitle,
-  SectionSubtitle,
-  Stagger,
-  StaggerItem,
-} from "./animations";
+import { HelpCircle } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 export function FAQ() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="faq" className="section-botanical bg-background">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section id="faq" className="section-prestige bg-muted/30">
+      <div className="container mx-auto px-4 max-w-4xl">
         {/* Section Header */}
-        <SectionHeader className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px w-16 bg-border" />
-            <MessageCircle
-              className="h-5 w-5 text-primary/60"
-              strokeWidth={1.5}
-            />
-            <div className="h-px w-16 bg-border" />
-          </div>
-          <SectionTitle className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4 text-balance">
+        <motion.div
+          className="text-center mb-12"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className={`font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 ${language === "zh" ? "font-serif-cn" : ""}`}>
             {t.faq.title}
-          </SectionTitle>
-          <SectionSubtitle className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          </h2>
+          <p className="text-lg text-muted-foreground">
             {t.faq.subtitle}
-          </SectionSubtitle>
-        </SectionHeader>
+          </p>
+        </motion.div>
 
         {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto">
-          <Stagger>
-            <Accordion type="single" collapsible className="space-y-4">
-              {t.faq.items.map((item, index) => (
-                <StaggerItem key={index}>
-                  <AccordionItem
-                    value={`item-${index}`}
-                    className="card-botanical border-none px-0 overflow-hidden"
-                  >
-                    <AccordionTrigger className="text-left hover:no-underline px-6 py-5 [&[data-state=open]]:bg-muted/50 transition-colors duration-300">
-                      <div className="flex items-start gap-4">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                          <HelpCircle
-                            className="h-4 w-4 text-primary"
-                            strokeWidth={1.5}
-                          />
-                        </div>
-                        <span className="font-serif text-lg font-medium text-foreground pr-4 text-left">
-                          {item.question}
-                        </span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-6 pt-4">
-                      <div className="text-base text-muted-foreground leading-relaxed pl-4">
-                        {item.answer}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                </StaggerItem>
-              ))}
-            </Accordion>
-          </Stagger>
-        </div>
+        <motion.div
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Accordion type="single" collapsible className="space-y-3">
+            {t.faq.items.map((item, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className="card-prestige border-none overflow-hidden"
+              >
+                <AccordionTrigger className="text-left hover:no-underline px-6 py-5 data-[state=open]:bg-muted/50 transition-colors duration-200">
+                  <div className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                      <HelpCircle
+                        className="h-4 w-4 text-primary"
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                    <span className="font-semibold text-foreground pr-4 text-left">
+                      {item.question}
+                    </span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6 pt-2">
+                  <div className="text-muted-foreground leading-relaxed pl-12">
+                    {item.answer}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
       </div>
     </section>
   );

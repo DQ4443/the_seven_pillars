@@ -1,229 +1,134 @@
 "use client";
 
-import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/context";
-import { CheckCircle, ExternalLink, Sparkles } from "lucide-react";
-import {
-  SectionHeader,
-  SectionTitle,
-  SectionSubtitle,
-  FadeInUp,
-  FadeInLeft,
-  FadeIn,
-  Stagger,
-  StaggerItem,
-  CardHover,
-  MorphingBlob,
-} from "./animations";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
-import { useRef } from "react";
+import { GraduationCap, Briefcase, Globe, Users, Trophy } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
-const YOUTUBE_VIDEO_ID = "3CCxbjoAhLg";
+const credentialIcons = [GraduationCap, Briefcase, Globe, Users];
 
 export function AboutDrRicky() {
   const { language, t } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Parallax transforms for background elements
-  const blobY1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const blobY2 = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const photoY = useTransform(scrollYProgress, [0, 1], [50, -50]);
-
   return (
-    <section
-      ref={sectionRef}
-      id="about"
-      className="section-botanical bg-background relative overflow-hidden"
-    >
-      {/* Top fade to blend with hero section gradient */}
-      <div className="absolute top-0 left-0 right-0 h-24 md:h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
-
-      {/* Parallax background decorations */}
-      <motion.div
-        className="absolute -top-20 -left-20 w-80 h-80 pointer-events-none"
-        style={{ y: shouldReduceMotion ? 0 : blobY1 }}
-      >
-        <MorphingBlob className="w-full h-full" color="primary" />
-      </motion.div>
-      <motion.div
-        className="absolute -bottom-20 -right-20 w-96 h-96 pointer-events-none"
-        style={{ y: shouldReduceMotion ? 0 : blobY2 }}
-      >
-        <MorphingBlob className="w-full h-full" color="secondary" />
-      </motion.div>
-
-      <div className="container relative mx-auto px-4 max-w-7xl">
+    <section id="about" className="section-prestige bg-background">
+      <div className="container mx-auto px-4 max-w-6xl">
         {/* Section Header */}
-        <SectionHeader className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px w-16 bg-border" />
-            <Sparkles className="h-5 w-5 text-primary/60" strokeWidth={1.5} />
-            <div className="h-px w-16 bg-border" />
-          </div>
-          <SectionTitle className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4 text-balance">
+        <motion.div
+          className="text-center mb-16"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className={`font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 ${language === "zh" ? "font-serif-cn" : ""}`}>
             {t.about.title}
-          </SectionTitle>
-          <SectionSubtitle className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t.about.subtitle}
-          </SectionSubtitle>
-        </SectionHeader>
+          </p>
+        </motion.div>
 
-        {/* Mobile: Photo first, then story. Desktop: Photo and story side by side in left column */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left: Arch Photo + Story */}
-          <FadeInLeft className="space-y-8">
-            {/* Dr. Ricky Photo - Arch Shape with Parallax - Shows first on mobile */}
-            <motion.div
-              className="w-[52%] mx-auto aspect-[3/4] bg-muted relative border border-border overflow-hidden shadow-botanical-lg lg:mb-0 -mt-8 lg:mt-0"
-              style={{
-                borderRadius: "90px 90px 12px 12px",
-                y: shouldReduceMotion ? 0 : photoY,
-              }}
-              whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Image
-                src="/dr_ricky.png"
-                alt={language === "zh" ? "曲博士" : "Dr. Ricky"}
-                fill
-                className="object-cover object-[center_20%]"
-                sizes="(max-width: 768px) 52vw, 26vw"
-                priority
-              />
-            </motion.div>
+        {/* Narrative Section */}
+        <motion.div
+          className="max-w-3xl mx-auto text-center mb-16"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <p className="text-xl md:text-2xl text-foreground leading-relaxed font-serif italic">
+            {t.about.narrative}
+          </p>
+        </motion.div>
 
-            {/* Story */}
-            <div className="space-y-5">
-              <p className="text-foreground leading-relaxed text-lg">
-                {t.about.story}
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                {t.about.approach}
-              </p>
-            </div>
-          </FadeInLeft>
-
-          {/* Right: Credentials + Philosophy */}
-          <Stagger className="space-y-6">
-            {/* Credentials Card */}
-            <StaggerItem>
-              <CardHover>
-                <div className="card-botanical p-8 transition-shadow duration-300 hover:shadow-botanical-lg">
-                  <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6">
-                    {language === "zh" ? "资历背景" : "Credentials"}
-                  </h3>
-                  <ul className="space-y-4">
-                    {t.about.credentials.map((credential, index) => (
-                      <motion.li
-                        key={index}
-                        className="flex items-start gap-3"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <motion.div
-                          className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5"
-                          whileHover={{
-                            scale: 1.2,
-                            backgroundColor: "rgba(140, 154, 132, 0.3)",
-                          }}
-                        >
-                          <CheckCircle
-                            className="h-4 w-4 text-primary"
-                            strokeWidth={1.5}
-                          />
-                        </motion.div>
-                        <span className="text-foreground">{credential}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </CardHover>
-            </StaggerItem>
-
-            {/* Philosophy Card */}
-            <StaggerItem>
-              <CardHover>
-                <div className="card-botanical p-8 bg-muted transition-shadow duration-300 hover:shadow-botanical-lg">
-                  <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-6">
-                    {t.about.philosophy.title}
-                  </h3>
-                  <ul className="space-y-4">
-                    {t.about.philosophy.points.map((point, index) => (
-                      <motion.li
-                        key={index}
-                        className="flex items-start gap-3"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <motion.div
-                          className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5"
-                          whileHover={{
-                            scale: 1.2,
-                            backgroundColor: "rgba(194, 123, 102, 0.3)",
-                          }}
-                        >
-                          <CheckCircle
-                            className="h-4 w-4 text-accent"
-                            strokeWidth={1.5}
-                          />
-                        </motion.div>
-                        <span className="text-foreground">{point}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-              </CardHover>
-            </StaggerItem>
-          </Stagger>
-        </div>
-
-        {/* Video Section */}
-        <FadeInUp className="mt-20">
-          <h3 className="font-serif text-2xl md:text-3xl font-semibold text-center mb-8">
-            {t.about.watchVideo}
+        {/* Credential Timeline */}
+        <motion.div
+          className="mb-20"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <h3 className={`font-serif text-2xl font-bold text-foreground text-center mb-10 ${language === "zh" ? "font-serif-cn" : ""}`}>
+            {t.about.credentials.title}
           </h3>
-          <div className="max-w-4xl mx-auto">
-            <FadeIn delay={0.2}>
-              <div className="relative aspect-video rounded-3xl overflow-hidden bg-muted shadow-botanical-lg">
-                <iframe
-                  src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}`}
-                  title="Dr. Ricky explains his teaching approach"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                />
-              </div>
-            </FadeIn>
-            <div className="mt-4 text-center">
-              <a
-                href={`https://www.youtube.com/watch?v=${YOUTUBE_VIDEO_ID}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-base text-muted-foreground hover:text-foreground transition-colors duration-300"
-              >
-                <ExternalLink className="h-4 w-4" strokeWidth={1.5} />
-                <span>
-                  {language === "zh" ? "在YouTube中打开" : "Open in YouTube"}
-                </span>
-              </a>
+
+          {/* Vertical Timeline */}
+          <div className="relative max-w-2xl mx-auto">
+            {/* Timeline Line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-px" />
+
+            {/* Timeline Items */}
+            <div className="space-y-8">
+              {t.about.credentials.items.map((item, index) => {
+                const Icon = credentialIcons[index];
+                const isEven = index % 2 === 0;
+
+                return (
+                  <motion.div
+                    key={index}
+                    className={`relative flex items-center gap-4 md:gap-8 ${
+                      isEven ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
+                    initial={shouldReduceMotion ? {} : { opacity: 0, x: isEven ? -20 : 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    {/* Content Card */}
+                    <div className={`flex-1 ml-16 md:ml-0 ${isEven ? "md:text-right md:pr-8" : "md:text-left md:pl-8"}`}>
+                      <div className="card-prestige p-6 inline-block">
+                        <h4 className="font-semibold text-foreground mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">
+                          {item.subtitle}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Timeline Node */}
+                    <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background z-10" />
+
+                    {/* Icon (hidden on mobile, shown on desktop) */}
+                    <div className={`hidden md:flex flex-1 ${isEven ? "justify-start pl-8" : "justify-end pr-8"}`}>
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
-        </FadeInUp>
+        </motion.div>
+
+        {/* Twins Feature - Gold Border Bento Box */}
+        <motion.div
+          className="card-gold-border p-8 md:p-10 max-w-4xl mx-auto"
+          initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            {/* Image placeholder for twins */}
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-muted flex items-center justify-center shrink-0 border-4 border-accent/20">
+              <Trophy className="h-16 w-16 text-accent" strokeWidth={1} />
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 text-center md:text-left">
+              <h3 className={`font-serif text-2xl md:text-3xl font-bold text-foreground mb-4 ${language === "zh" ? "font-serif-cn" : ""}`}>
+                {t.about.twins.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {t.about.twins.description}
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

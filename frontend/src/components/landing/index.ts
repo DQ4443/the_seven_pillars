@@ -1,10 +1,10 @@
 export { Header } from "./header";
 export { Hero } from "./hero";
+export { PainPoints } from "./pain-points";
 export { AboutDrRicky } from "./about-dr-ricky";
 export { SuccessStories } from "./success-stories";
-export { Timetable } from "./timetable";
-export { UpcomingEvents } from "./upcoming-events";
+export { Courses } from "./courses";
 export { FAQ } from "./faq";
-export { Location } from "./location";
-export { Contact } from "./contact";
+export { Admissions } from "./admissions";
 export { Footer } from "./footer";
+export { StickyConversionBar } from "./sticky-bar";
