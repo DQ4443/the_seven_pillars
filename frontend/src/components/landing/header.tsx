@@ -10,8 +10,10 @@ const navItems = [
   { key: "about", href: "#credentials" },
   { key: "success", href: "#testimonials" },
   { key: "courses", href: "#pricing" },
+  { key: "timetable", href: "#timetable" },
   { key: "admissions", href: "#enrollment" },
   { key: "faq", href: "#faq" },
+  { key: "contact", href: "#contact" },
 ] as const;
 
 export function Header() {

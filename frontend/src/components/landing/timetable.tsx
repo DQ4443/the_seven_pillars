@@ -86,42 +86,6 @@ export function Timetable() {
     },
   ];
 
-  // Desktop grid data
-  const days = [
-    { key: "mon", en: "MON", zh: "星期一" },
-    { key: "tue", en: "TUE", zh: "星期二" },
-    { key: "wed", en: "WED", zh: "星期三" },
-    { key: "thu", en: "THU", zh: "星期四" },
-    { key: "fri", en: "FRI", zh: "星期五" },
-  ];
-
-  const schedule = [
-    {
-      time: "4:15-5:45 PM",
-      mon: { subject: "Y8 Maths", subjectZh: "8年级数学", type: "math" as const },
-      tue: { subject: "Y9 Maths", subjectZh: "9年级数学", type: "math" as const },
-      wed: { subject: "Pre-VCE Methods", subjectZh: "Pre-VCE 中数 1&2", type: "math" as const },
-      thu: { subject: "Y8 Maths", subjectZh: "8年级数学", type: "math" as const },
-      fri: { subject: "Y6 Maths", subjectZh: "6年级数学", type: "math" as const },
-    },
-    {
-      time: "5:45-7:15 PM",
-      mon: { subject: "Pre-VCE Chemistry", subjectZh: "Pre-VCE 化学", type: "science" as const },
-      tue: { subject: "Y10 Maths", subjectZh: "10年级数学", type: "math" as const },
-      wed: { subject: "Y7 Maths", subjectZh: "7年级数学", type: "math" as const },
-      thu: { subject: "Y9 Maths", subjectZh: "9年级数学", type: "math" as const },
-      fri: null,
-    },
-    {
-      time: "7:15-8:45 PM",
-      mon: { subject: "Y10 Maths", subjectZh: "10年级数学", type: "math" as const },
-      tue: { subject: "Y8-9 Science", subjectZh: "8-9年级科学", type: "science" as const },
-      wed: null,
-      thu: { subject: "Pre-VCE Methods", subjectZh: "Pre-VCE 中数 1&2", type: "math" as const },
-      fri: null,
-    },
-  ];
-
   const activeYear = yearLevels.find((y) => y.id === activeTab);
 
   // Group classes by type for display
@@ -153,18 +117,24 @@ export function Timetable() {
           </Badge>
         </motion.div>
 
-        {/* Mobile View - Tabs by year level */}
-        <div className="md:hidden">
-          {/* Year level tabs - fits on screen */}
-          <div className="flex gap-2 mb-4 justify-center flex-wrap">
+        {/* Unified Tab View for Mobile and Desktop */}
+        <motion.div
+          className="max-w-2xl mx-auto"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          {/* Year level tabs */}
+          <div className="flex gap-2 mb-6 justify-center flex-wrap">
             {yearLevels.map((year) => (
               <button
                 key={year.id}
                 onClick={() => setActiveTab(year.id)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg text-sm font-medium transition-all ${
                   activeTab === year.id
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-white text-foreground border border-border"
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-white text-foreground border border-border hover:border-primary/50"
                 }`}
               >
                 {language === "zh" ? year.labelZh : year.label}
@@ -181,26 +151,35 @@ export function Timetable() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
             >
-              <Card>
-                <CardContent className="p-4 space-y-4">
+              <Card className="border-2">
+                <CardContent className="p-5 sm:p-6 space-y-5">
                   {/* Math Classes */}
                   {mathClasses.length > 0 && (
                     <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Calculator className="w-4 h-4 text-primary" />
-                        <span className="font-medium text-sm text-foreground">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                          <Calculator className="w-4 h-4 text-primary" />
+                        </div>
+                        <span className="font-medium text-foreground">
                           {language === "zh" ? "数学" : "Maths"}
                         </span>
                       </div>
-                      <div className="space-y-2">
+                      <div className="grid gap-2 sm:grid-cols-2">
                         {mathClasses.map((cls, idx) => (
                           <div
                             key={idx}
-                            className="flex items-center justify-between p-3 rounded-lg bg-primary/5 border border-primary/10"
+                            className="flex items-center justify-between p-3 sm:p-4 rounded-lg bg-primary/5 border border-primary/10"
                           >
-                            <span className="font-medium text-sm text-foreground">
-                              {language === "zh" ? cls.dayZh : cls.day}
-                            </span>
+                            <div>
+                              <span className="font-medium text-sm sm:text-base text-foreground">
+                                {language === "zh" ? cls.dayZh : cls.day}
+                              </span>
+                              {cls.subject !== "Maths" && (
+                                <p className="text-xs text-muted-foreground mt-0.5">
+                                  {language === "zh" ? cls.subjectZh : cls.subject}
+                                </p>
+                              )}
+                            </div>
                             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
                               <Clock className="w-3.5 h-3.5" />
                               {cls.time}
@@ -209,8 +188,9 @@ export function Timetable() {
                         ))}
                       </div>
                       {mathClasses.length > 1 && (
-                        <p className="text-xs text-muted-foreground mt-2">
-                          {language === "zh" ? "* 每周选其中一个时间" : "* Choose one session per week"}
+                        <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
+                          <span className="text-accent">*</span>
+                          {language === "zh" ? "每周选其中一个时间" : "Choose one session per week"}
                         </p>
                       )}
                     </div>
@@ -219,21 +199,23 @@ export function Timetable() {
                   {/* Science Classes */}
                   {scienceClasses.length > 0 && (
                     <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <FlaskConical className="w-4 h-4 text-accent" />
-                        <span className="font-medium text-sm text-foreground">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                          <FlaskConical className="w-4 h-4 text-accent" />
+                        </div>
+                        <span className="font-medium text-foreground">
                           {language === "zh"
                             ? activeTab === "prevce" ? "化学" : "科学"
                             : activeTab === "prevce" ? "Chemistry" : "Science"}
                         </span>
                       </div>
-                      <div className="space-y-2">
+                      <div className="grid gap-2 sm:grid-cols-2">
                         {scienceClasses.map((cls, idx) => (
                           <div
                             key={idx}
-                            className="flex items-center justify-between p-3 rounded-lg bg-accent/5 border border-accent/20"
+                            className="flex items-center justify-between p-3 sm:p-4 rounded-lg bg-accent/5 border border-accent/20"
                           >
-                            <span className="font-medium text-sm text-foreground">
+                            <span className="font-medium text-sm sm:text-base text-foreground">
                               {language === "zh" ? cls.dayZh : cls.day}
                             </span>
                             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -249,68 +231,9 @@ export function Timetable() {
               </Card>
             </motion.div>
           </AnimatePresence>
-        </div>
-
-        {/* Desktop View - Grid table */}
-        <motion.div
-          className="hidden md:block max-w-5xl mx-auto"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <Card>
-            <CardContent className="p-0">
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-primary text-primary-foreground">
-                      <th className="p-3 text-left font-medium text-sm w-28"></th>
-                      {days.map((day) => (
-                        <th key={day.key} className="p-3 text-center font-medium text-sm">
-                          <div>{day.en}</div>
-                          <div className="text-xs opacity-80">({day.zh})</div>
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {schedule.map((slot, rowIdx) => (
-                      <tr key={rowIdx} className="border-t border-border">
-                        <td className="p-3 text-sm font-medium text-muted-foreground whitespace-nowrap">
-                          {slot.time}
-                        </td>
-                        {days.map((day) => {
-                          const classData = slot[day.key as keyof typeof slot] as { subject: string; subjectZh: string; type: "math" | "science" } | null;
-                          return (
-                            <td key={day.key} className="p-2">
-                              {classData ? (
-                                <div
-                                  className={`p-2 rounded-lg border text-center ${
-                                    classData.type === "math"
-                                      ? "bg-primary/5 border-primary/10"
-                                      : "bg-accent/5 border-accent/20"
-                                  }`}
-                                >
-                                  <p className="font-medium text-sm text-foreground">{classData.subject}</p>
-                                  <p className="text-xs text-muted-foreground">({classData.subjectZh})</p>
-                                </div>
-                              ) : (
-                                <div className="p-2 text-center text-muted-foreground/40">—</div>
-                              )}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
 
           {/* Legend */}
-          <div className="flex justify-center gap-6 mt-4">
+          <div className="flex justify-center gap-6 mt-6">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <div className="w-4 h-4 rounded bg-primary/10 border border-primary/20" />
               <span>{language === "zh" ? "数学" : "Maths"}</span>
