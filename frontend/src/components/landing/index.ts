@@ -19,5 +19,4 @@ export { StickyConversionBar } from "./sticky-bar";
 // Legacy exports (kept for compatibility)
 export { AboutDrRicky } from "./about-dr-ricky";
 export { SuccessStories } from "./success-stories";
-export { Courses } from "./courses";
 export { Admissions } from "./admissions";
