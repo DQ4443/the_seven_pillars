@@ -3,105 +3,130 @@
 import { useState } from "react";
 import { useLanguage } from "@/lib/i18n/context";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Clock, MapPin, Monitor } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Clock, Calculator, FlaskConical } from "lucide-react";
 
-interface ClassSession {
+interface ClassInfo {
   subject: string;
+  subjectZh: string;
+  day: string;
+  dayZh: string;
   time: string;
-  location: "onsite" | "hybrid";
-  isAccelerated?: boolean;
+  type: "math" | "science";
 }
 
-interface TimetableData {
-  weekday: ClassSession[];
-  weekend: ClassSession[];
+interface YearData {
+  id: string;
+  label: string;
+  labelZh: string;
+  classes: ClassInfo[];
 }
-
-type YearLevel = "year9" | "year10" | "vce12" | "vce34";
 
 export function Timetable() {
   const { language } = useLanguage();
   const shouldReduceMotion = useReducedMotion();
-  const [activeTab, setActiveTab] = useState<YearLevel>("year9");
+  const [activeTab, setActiveTab] = useState("y6");
 
-  const tabs: { id: YearLevel; label: string }[] = [
-    { id: "year9", label: language === "zh" ? "9年级" : "Year 9" },
-    { id: "year10", label: language === "zh" ? "10年级" : "Year 10" },
-    { id: "vce12", label: "VCE Unit 1/2" },
-    { id: "vce34", label: "VCE Unit 3/4" },
+  const yearLevels: YearData[] = [
+    {
+      id: "y6",
+      label: "Year 6",
+      labelZh: "6年级",
+      classes: [
+        { subject: "Maths", subjectZh: "数学", day: "FRI", dayZh: "周五", time: "4:15-5:45 PM", type: "math" },
+      ],
+    },
+    {
+      id: "y7",
+      label: "Year 7",
+      labelZh: "7年级",
+      classes: [
+        { subject: "Maths", subjectZh: "数学", day: "WED", dayZh: "周三", time: "5:45-7:15 PM", type: "math" },
+      ],
+    },
+    {
+      id: "y8",
+      label: "Year 8",
+      labelZh: "8年级",
+      classes: [
+        { subject: "Maths", subjectZh: "数学", day: "MON", dayZh: "周一", time: "4:15-5:45 PM", type: "math" },
+        { subject: "Maths", subjectZh: "数学", day: "THU", dayZh: "周四", time: "4:15-5:45 PM", type: "math" },
+        { subject: "Science", subjectZh: "科学", day: "TUE", dayZh: "周二", time: "7:15-8:45 PM", type: "science" },
+      ],
+    },
+    {
+      id: "y9",
+      label: "Year 9",
+      labelZh: "9年级",
+      classes: [
+        { subject: "Maths", subjectZh: "数学", day: "TUE", dayZh: "周二", time: "4:15-5:45 PM", type: "math" },
+        { subject: "Maths", subjectZh: "数学", day: "THU", dayZh: "周四", time: "5:45-7:15 PM", type: "math" },
+        { subject: "Science", subjectZh: "科学", day: "TUE", dayZh: "周二", time: "7:15-8:45 PM", type: "science" },
+      ],
+    },
+    {
+      id: "y10",
+      label: "Year 10",
+      labelZh: "10年级",
+      classes: [
+        { subject: "Maths", subjectZh: "数学", day: "TUE", dayZh: "周二", time: "5:45-7:15 PM", type: "math" },
+        { subject: "Maths", subjectZh: "数学", day: "MON", dayZh: "周一", time: "7:15-8:45 PM", type: "math" },
+      ],
+    },
+    {
+      id: "prevce",
+      label: "Pre-VCE",
+      labelZh: "Pre-VCE",
+      classes: [
+        { subject: "Methods", subjectZh: "中数 1&2", day: "WED", dayZh: "周三", time: "4:15-5:45 PM", type: "math" },
+        { subject: "Methods", subjectZh: "中数 1&2", day: "THU", dayZh: "周四", time: "7:15-8:45 PM", type: "math" },
+        { subject: "Chemistry", subjectZh: "化学", day: "MON", dayZh: "周一", time: "5:45-7:15 PM", type: "science" },
+      ],
+    },
   ];
 
-  // Placeholder timetable data
-  const timetableData: Record<YearLevel, TimetableData> = {
-    year9: {
-      weekday: [
-        {
-          subject: language === "zh" ? "化学大师班 (曲博士)" : "Chemistry Masterclass (Dr. Ricky)",
-          time: "4:30 PM - 6:00 PM",
-          location: "hybrid",
-        },
-      ],
-      weekend: [
-        {
-          subject: language === "zh" ? "数学强化班" : "Math Intensive",
-          time: "10:00 AM - 11:30 AM",
-          location: "onsite",
-        },
-      ],
-    },
-    year10: {
-      weekday: [
-        {
-          subject: language === "zh" ? "Pre-VCE 化学" : "Pre-VCE Chemistry",
-          time: "5:00 PM - 6:30 PM",
-          location: "hybrid",
-          isAccelerated: true,
-        },
-      ],
-      weekend: [
-        {
-          subject: language === "zh" ? "Pre-VCE 中数" : "Pre-VCE Methods",
-          time: "2:00 PM - 3:30 PM",
-          location: "hybrid",
-          isAccelerated: true,
-        },
-      ],
-    },
-    vce12: {
-      weekday: [
-        {
-          subject: language === "zh" ? "VCE 化学 Unit 1/2" : "VCE Chemistry Unit 1/2",
-          time: "5:30 PM - 7:00 PM",
-          location: "hybrid",
-        },
-      ],
-      weekend: [
-        {
-          subject: language === "zh" ? "VCE 中数 Unit 1/2" : "VCE Methods Unit 1/2",
-          time: "1:00 PM - 2:30 PM",
-          location: "hybrid",
-        },
-      ],
-    },
-    vce34: {
-      weekday: [
-        {
-          subject: language === "zh" ? "VCE 化学 Unit 3/4" : "VCE Chemistry Unit 3/4",
-          time: "6:00 PM - 7:30 PM",
-          location: "hybrid",
-        },
-      ],
-      weekend: [
-        {
-          subject: language === "zh" ? "VCE 中数 Unit 3/4" : "VCE Methods Unit 3/4",
-          time: "3:00 PM - 4:30 PM",
-          location: "hybrid",
-        },
-      ],
-    },
-  };
+  // Desktop grid data
+  const days = [
+    { key: "mon", en: "MON", zh: "星期一" },
+    { key: "tue", en: "TUE", zh: "星期二" },
+    { key: "wed", en: "WED", zh: "星期三" },
+    { key: "thu", en: "THU", zh: "星期四" },
+    { key: "fri", en: "FRI", zh: "星期五" },
+  ];
 
-  const currentData = timetableData[activeTab];
+  const schedule = [
+    {
+      time: "4:15-5:45 PM",
+      mon: { subject: "Y8 Maths", subjectZh: "8年级数学", type: "math" as const },
+      tue: { subject: "Y9 Maths", subjectZh: "9年级数学", type: "math" as const },
+      wed: { subject: "Pre-VCE Methods", subjectZh: "Pre-VCE 中数 1&2", type: "math" as const },
+      thu: { subject: "Y8 Maths", subjectZh: "8年级数学", type: "math" as const },
+      fri: { subject: "Y6 Maths", subjectZh: "6年级数学", type: "math" as const },
+    },
+    {
+      time: "5:45-7:15 PM",
+      mon: { subject: "Pre-VCE Chemistry", subjectZh: "Pre-VCE 化学", type: "science" as const },
+      tue: { subject: "Y10 Maths", subjectZh: "10年级数学", type: "math" as const },
+      wed: { subject: "Y7 Maths", subjectZh: "7年级数学", type: "math" as const },
+      thu: { subject: "Y9 Maths", subjectZh: "9年级数学", type: "math" as const },
+      fri: null,
+    },
+    {
+      time: "7:15-8:45 PM",
+      mon: { subject: "Y10 Maths", subjectZh: "10年级数学", type: "math" as const },
+      tue: { subject: "Y8-9 Science", subjectZh: "8-9年级科学", type: "science" as const },
+      wed: null,
+      thu: { subject: "Pre-VCE Methods", subjectZh: "Pre-VCE 中数 1&2", type: "math" as const },
+      fri: null,
+    },
+  ];
+
+  const activeYear = yearLevels.find((y) => y.id === activeTab);
+
+  // Group classes by type for display
+  const mathClasses = activeYear?.classes.filter((c) => c.type === "math") || [];
+  const scienceClasses = activeYear?.classes.filter((c) => c.type === "science") || [];
 
   return (
     <section id="timetable" className="py-12 sm:py-16 md:py-24 bg-muted/30">
@@ -121,147 +146,189 @@ export function Timetable() {
           >
             {language === "zh" ? "课程时间表" : "Class Schedule"}
           </h2>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
+          <Badge variant="secondary" className="text-sm">
             {language === "zh"
-              ? "选择适合您孩子的课程时间"
-              : "Find the right class time for your child"}
-          </p>
+              ? "2026 Term 1 (1月27日 - 4月2日，共10周)"
+              : "2026 Term 1 (Jan 27 - Apr 2, 10 weeks)"}
+          </Badge>
         </motion.div>
 
-        {/* Tabs - Horizontal scroll on mobile */}
-        <div className="flex gap-2 mb-6 sm:mb-8 overflow-x-auto pb-2 -mx-5 px-5 sm:mx-0 sm:px-0 sm:flex-wrap sm:justify-center" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-3 sm:px-4 py-2 rounded-lg font-medium transition-all whitespace-nowrap text-sm sm:text-base touch-target shrink-0 ${
-                activeTab === tab.id
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-white text-foreground hover:bg-muted active:bg-muted border border-border"
-              }`}
+        {/* Mobile View - Tabs by year level */}
+        <div className="md:hidden">
+          {/* Year level tabs - fits on screen */}
+          <div className="flex gap-2 mb-4 justify-center flex-wrap">
+            {yearLevels.map((year) => (
+              <button
+                key={year.id}
+                onClick={() => setActiveTab(year.id)}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                  activeTab === year.id
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-white text-foreground border border-border"
+                }`}
+              >
+                {language === "zh" ? year.labelZh : year.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Selected year classes */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
             >
-              {tab.label}
-            </button>
-          ))}
+              <Card>
+                <CardContent className="p-4 space-y-4">
+                  {/* Math Classes */}
+                  {mathClasses.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Calculator className="w-4 h-4 text-primary" />
+                        <span className="font-medium text-sm text-foreground">
+                          {language === "zh" ? "数学" : "Maths"}
+                        </span>
+                      </div>
+                      <div className="space-y-2">
+                        {mathClasses.map((cls, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center justify-between p-3 rounded-lg bg-primary/5 border border-primary/10"
+                          >
+                            <span className="font-medium text-sm text-foreground">
+                              {language === "zh" ? cls.dayZh : cls.day}
+                            </span>
+                            <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                              <Clock className="w-3.5 h-3.5" />
+                              {cls.time}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      {mathClasses.length > 1 && (
+                        <p className="text-xs text-muted-foreground mt-2">
+                          {language === "zh" ? "* 每周选其中一个时间" : "* Choose one session per week"}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Science Classes */}
+                  {scienceClasses.length > 0 && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <FlaskConical className="w-4 h-4 text-accent" />
+                        <span className="font-medium text-sm text-foreground">
+                          {language === "zh"
+                            ? activeTab === "prevce" ? "化学" : "科学"
+                            : activeTab === "prevce" ? "Chemistry" : "Science"}
+                        </span>
+                      </div>
+                      <div className="space-y-2">
+                        {scienceClasses.map((cls, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-center justify-between p-3 rounded-lg bg-accent/5 border border-accent/20"
+                          >
+                            <span className="font-medium text-sm text-foreground">
+                              {language === "zh" ? cls.dayZh : cls.day}
+                            </span>
+                            <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                              <Clock className="w-3.5 h-3.5" />
+                              {cls.time}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Timetable Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="card-prestige overflow-hidden bg-white">
-              {/* Weekday Row */}
-              <div className="border-b border-border">
-                <div className="bg-muted/50 px-4 sm:px-6 py-2.5 sm:py-3">
-                  <h4 className="font-semibold text-foreground text-sm sm:text-base">
-                    {language === "zh" ? "工作日" : "Weekday"}
-                  </h4>
-                </div>
-                <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
-                  {currentData.weekday.map((session, index) => (
-                    <ClassCard key={index} session={session} language={language} />
-                  ))}
-                </div>
+        {/* Desktop View - Grid table */}
+        <motion.div
+          className="hidden md:block max-w-5xl mx-auto"
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <Card>
+            <CardContent className="p-0">
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="bg-primary text-primary-foreground">
+                      <th className="p-3 text-left font-medium text-sm w-28"></th>
+                      {days.map((day) => (
+                        <th key={day.key} className="p-3 text-center font-medium text-sm">
+                          <div>{day.en}</div>
+                          <div className="text-xs opacity-80">({day.zh})</div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {schedule.map((slot, rowIdx) => (
+                      <tr key={rowIdx} className="border-t border-border">
+                        <td className="p-3 text-sm font-medium text-muted-foreground whitespace-nowrap">
+                          {slot.time}
+                        </td>
+                        {days.map((day) => {
+                          const classData = slot[day.key as keyof typeof slot] as { subject: string; subjectZh: string; type: "math" | "science" } | null;
+                          return (
+                            <td key={day.key} className="p-2">
+                              {classData ? (
+                                <div
+                                  className={`p-2 rounded-lg border text-center ${
+                                    classData.type === "math"
+                                      ? "bg-primary/5 border-primary/10"
+                                      : "bg-accent/5 border-accent/20"
+                                  }`}
+                                >
+                                  <p className="font-medium text-sm text-foreground">{classData.subject}</p>
+                                  <p className="text-xs text-muted-foreground">({classData.subjectZh})</p>
+                                </div>
+                              ) : (
+                                <div className="p-2 text-center text-muted-foreground/40">—</div>
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
+            </CardContent>
+          </Card>
 
-              {/* Weekend Row */}
-              <div>
-                <div className="bg-muted/50 px-4 sm:px-6 py-2.5 sm:py-3">
-                  <h4 className="font-semibold text-foreground text-sm sm:text-base">
-                    {language === "zh" ? "周末" : "Weekend"}
-                  </h4>
-                </div>
-                <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
-                  {currentData.weekend.map((session, index) => (
-                    <ClassCard key={index} session={session} language={language} />
-                  ))}
-                </div>
-              </div>
+          {/* Legend */}
+          <div className="flex justify-center gap-6 mt-4">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="w-4 h-4 rounded bg-primary/10 border border-primary/20" />
+              <span>{language === "zh" ? "数学" : "Maths"}</span>
             </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="w-4 h-4 rounded bg-accent/10 border border-accent/20" />
+              <span>{language === "zh" ? "科学" : "Science"}</span>
+            </div>
+          </div>
+        </motion.div>
 
-            {/* Note about accelerated pathway */}
-            {(activeTab === "year10" || activeTab === "year9") && (
-              <motion.p
-                className="text-center mt-4 sm:mt-6 text-xs sm:text-sm px-2"
-                initial={shouldReduceMotion ? {} : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <span className="text-accent font-medium">
-                  {language === "zh" ? "加速课程" : "Accelerated Pathway"}:
-                </span>{" "}
-                <span className="text-muted-foreground">
-                  {language === "zh"
-                    ? "在10年级完成 Unit 1/2，获得 ATAR 战略优势"
-                    : "Complete Unit 1/2 in Year 10 for ATAR strategic advantage"}
-                </span>
-              </motion.p>
-            )}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Placeholder Note */}
-        <p className="text-center text-muted-foreground/60 text-xs sm:text-sm mt-4 sm:mt-6 md:mt-8">
+        {/* Contact Note */}
+        <p className="text-center text-muted-foreground text-xs sm:text-sm mt-6">
           {language === "zh"
-            ? "* 课程时间为占位符，实际时间请联系我们确认"
-            : "* Class times are placeholders, contact us to confirm actual schedule"}
+            ? "如需了解更多课程信息，请联系我们"
+            : "Contact us for more information about classes"}
         </p>
       </div>
     </section>
-  );
-}
-
-function ClassCard({
-  session,
-  language,
-}: {
-  session: ClassSession;
-  language: string;
-}) {
-  return (
-    <div
-      className={`flex flex-col gap-2 sm:gap-3 p-3 sm:p-4 rounded-lg ${
-        session.isAccelerated
-          ? "bg-accent/5 border border-accent"
-          : "bg-muted/30"
-      }`}
-    >
-      <div className="flex-1">
-        <h5 className="font-medium text-foreground text-sm sm:text-base flex flex-wrap items-center gap-2">
-          {session.subject}
-          {session.isAccelerated && (
-            <span className="text-[10px] sm:text-xs px-2 py-0.5 bg-accent text-white rounded-full">
-              {language === "zh" ? "加速" : "Accelerated"}
-            </span>
-          )}
-        </h5>
-      </div>
-
-      <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
-        <span className="flex items-center gap-1">
-          <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-          {session.time}
-        </span>
-        <span className="flex items-center gap-1">
-          {session.location === "onsite" ? (
-            <>
-              <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              {language === "zh" ? "实体课" : "Onsite"}
-            </>
-          ) : (
-            <>
-              <Monitor className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              {language === "zh" ? "线上/线下" : "Hybrid"}
-            </>
-          )}
-        </span>
-      </div>
-    </div>
   );
 }

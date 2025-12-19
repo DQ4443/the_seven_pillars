@@ -60,7 +60,18 @@ export function FAQ() {
                 </AccordionTrigger>
                 <AccordionContent className="px-4 sm:px-6 pb-4 sm:pb-6 pt-0">
                   <div className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                    {item.answer}
+                    {Array.isArray(item.answer) ? (
+                      <ul className="space-y-2">
+                        {item.answer.map((point, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="text-accent mt-1 shrink-0">•</span>
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      item.answer
+                    )}
                   </div>
                 </AccordionContent>
               </AccordionItem>

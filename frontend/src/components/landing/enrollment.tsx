@@ -18,38 +18,38 @@ export function Enrollment() {
   const steps: Step[] = [
     {
       number: 1,
-      title: language === "zh" ? "咨询" : "Inquiry",
+      title: language === "zh" ? "联系我们" : "Contact Us",
       description:
         language === "zh"
-          ? "填写表格或添加微信联系我们"
-          : "Fill form or contact us via WeChat",
+          ? "联系我们预约入学测试（微信或 WhatsApp）"
+          : "Contact us for an Entrance Test (via WeChat or WhatsApp)",
       icon: MessageCircle,
     },
     {
       number: 2,
-      title: language === "zh" ? "诊断测试" : "The Diagnostic",
+      title: language === "zh" ? "入学测试" : "Entrance Test",
       description:
         language === "zh"
-          ? "45分钟逻辑测试，而非单纯知识测验"
-          : "A 45-minute logic test, not just knowledge",
+          ? "完成入学测试后，返回给曲博士"
+          : "Complete the Entrance Test and return it to Dr. Ricky",
       icon: FileText,
     },
     {
       number: 3,
-      title: language === "zh" ? "结果咨询" : "The Consultation",
+      title: language === "zh" ? "评估报告" : "Assessment Report",
       description:
         language === "zh"
-          ? "曲博士与家长一起分析测试结果"
-          : "Dr. Ricky reviews results with parents",
+          ? "曲博士会给出全面详细的评估报告"
+          : "Dr. Ricky provides a comprehensive detailed assessment report",
       icon: ClipboardCheck,
     },
     {
       number: 4,
-      title: language === "zh" ? "录取通知" : "The Offer",
+      title: language === "zh" ? "电话约谈" : "Phone Consultation",
       description:
         language === "zh"
-          ? "根据测试结果安排合适的班级"
-          : "Placement in the appropriate class level",
+          ? "曲博士电话约谈入学细节"
+          : "Dr. Ricky schedules a phone consultation to discuss enrollment details",
       icon: Award,
     },
   ];
