@@ -30,7 +30,7 @@ export function StickyConversionBar() {
   };
 
   const handleBookDiagnostic = () => {
-    const element = document.querySelector("#enrollment");
+    const element = document.querySelector("#contact");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }

@@ -1,13 +1,10 @@
 export const translations = {
   en: {
     nav: {
-      about: "About",
-      success: "Results",
-      courses: "Courses",
-      timetable: "Schedule",
-      location: "Location",
-      admissions: "Admissions",
+      pricing: "Pricing",
+      timetable: "Timetable",
       faq: "FAQ",
+      admissions: "Admissions",
       contact: "Contact",
       bookDiagnostic: "Book Diagnostic",
     },
@@ -175,13 +172,10 @@ export const translations = {
 
   zh: {
     nav: {
-      about: "关于曲博士",
-      success: "家长评价",
-      courses: "课程价格",
-      timetable: "时间表",
-      location: "校区位置",
-      admissions: "入学流程",
+      pricing: "课程价格",
+      timetable: "课程时间",
       faq: "常见问题",
+      admissions: "入学流程",
       contact: "联系我们",
       bookDiagnostic: "预约诊断",
     },

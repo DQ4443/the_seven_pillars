@@ -7,12 +7,10 @@ import { Menu } from "lucide-react";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 const navItems = [
-  { key: "about", href: "#credentials" },
-  { key: "success", href: "#testimonials" },
-  { key: "courses", href: "#pricing" },
+  { key: "pricing", href: "#pricing" },
   { key: "timetable", href: "#timetable" },
-  { key: "admissions", href: "#enrollment" },
   { key: "faq", href: "#faq" },
+  { key: "admissions", href: "#enrollment" },
   { key: "contact", href: "#contact" },
 ] as const;
 
@@ -75,7 +73,7 @@ export function Header() {
 
             {/* CTA Button - Desktop Only (Gold) */}
             <button
-              onClick={() => scrollToSection("#enrollment")}
+              onClick={() => scrollToSection("#contact")}
               className="hidden md:inline-flex btn-gold"
             >
               {t.nav.bookDiagnostic}
@@ -139,7 +137,7 @@ export function Header() {
 
                     {/* CTA Button */}
                     <button
-                      onClick={() => scrollToSection("#enrollment")}
+                      onClick={() => scrollToSection("#contact")}
                       className="w-full btn-gold py-3"
                     >
                       {t.nav.bookDiagnostic}
